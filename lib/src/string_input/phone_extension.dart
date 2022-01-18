@@ -1,0 +1,4 @@
+enum PhoneExtension {
+  keep,
+  remove,
+}

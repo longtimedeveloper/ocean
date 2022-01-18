@@ -1,0 +1,4 @@
+enum RangeBoundaryType {
+  inclusive,
+  exclusive,
+}

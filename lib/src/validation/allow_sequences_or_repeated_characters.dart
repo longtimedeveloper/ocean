@@ -1,0 +1,4 @@
+enum AllowSequencesOrRepeatedCharacters {
+  no,
+  yes,
+}

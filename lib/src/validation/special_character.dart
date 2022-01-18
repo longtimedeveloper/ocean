@@ -1,0 +1,4 @@
+enum SpecialCharacter {
+  no,
+  yes,
+}

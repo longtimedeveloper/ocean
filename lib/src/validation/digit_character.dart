@@ -1,0 +1,4 @@
+enum DigitCharacter {
+  no,
+  yes,
+}

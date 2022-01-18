@@ -1,0 +1,4 @@
+enum LowerCaseCharacter {
+  no,
+  yes,
+}

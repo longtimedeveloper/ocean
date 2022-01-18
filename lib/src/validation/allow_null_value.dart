@@ -1,0 +1,4 @@
+enum AllowNullValue {
+  no,
+  yes,
+}

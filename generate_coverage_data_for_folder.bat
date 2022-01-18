@@ -1,0 +1,1 @@
+flutter test test/widgets --coverage  --no-pub

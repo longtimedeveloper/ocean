@@ -1,0 +1,4 @@
+enum StringCasingMethod {
+  stringSearch,
+  regEx,
+}

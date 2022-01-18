@@ -1,0 +1,4 @@
+enum RequiredEntry {
+  no,
+  yes,
+}

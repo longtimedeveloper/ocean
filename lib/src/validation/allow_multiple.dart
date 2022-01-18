@@ -1,0 +1,4 @@
+enum AllowMultiple {
+  no,
+  yes,
+}

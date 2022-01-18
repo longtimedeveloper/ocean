@@ -1,0 +1,4 @@
+enum ProcessStringFormatRules {
+  no,
+  yes,
+}
