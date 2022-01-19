@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ocean/ocean.dart';
 import '../../src.dart';
 
-abstract class Disposable {
-  void dispose();
-}
-
 abstract class ViewmodelBase with ShowSnackBar, ShowAppDialog, Logger {
   ViewmodelBase();
 
