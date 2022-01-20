@@ -24,6 +24,7 @@ class SignInBusinessObjectBuilder extends BusinessObjectMetadataBuilderBase<Sign
   @override
   void addSharedValidationRules(ValidationRulesManagerWrapper wrapper) {
     wrapper.addRule(RegularExpressionValidator(SignIn.emailPropertyName, RegularExpressionPatternType.email));
+    wrapper.addRule(StringLengthValidator.maximumOnly(SignIn.emailPropertyName, SignIn.emailMaximumLength));
     wrapper.addRule(
         StringLengthValidator(SignIn.passwordPropertyName, SignIn.passwordMinimumLength, SignIn.passwordMaximumLength));
   }
