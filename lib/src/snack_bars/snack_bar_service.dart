@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ocean/ocean.dart';
 import 'package:ocean/src/ocean_constants.dart';
 
-class SnackBarService implements SnackBarRegisterService, SnackBarShowService, SnackBarKeyService, BuildSnackBarService {
+class SnackBarService implements SnackBarRegisterService, SnackBarShowService, SnackBarKeyService, SnackBarBuildService {
   SnackBarService();
 
   final GlobalKey<ScaffoldMessengerState> _snackBarKey = GlobalKey<ScaffoldMessengerState>();

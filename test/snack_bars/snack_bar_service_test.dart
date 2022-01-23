@@ -63,6 +63,8 @@ void main() {
       service.registerSnackbar(key: 'key', snackBarBuilder: createSnackBar);
       final snackBarRequest = SnackBarRequest(key: 'key', text: snackBarText);
       final vm = ViewModel();
+      final snackBar = vm.buildSnackbar(snackBarRequest);
+      expect(snackBar.key, const Key(snackBarKeyText));
       await tester.pumpWidget(MaterialApp(
         scaffoldMessengerKey: service.snackBarKey,
         home: Scaffold(
@@ -101,4 +103,4 @@ SnackBar createSnackBar(SnackBarRequest snackBarRequest) {
   );
 }
 
-class ViewModel with ShowSnackBar {}
+class ViewModel with ShowSnackBar, BuildSnackBar {}
