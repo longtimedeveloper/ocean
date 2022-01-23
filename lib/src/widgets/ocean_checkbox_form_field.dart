@@ -18,10 +18,12 @@ class OceanCheckboxFormField extends StatefulWidget {
     this.checkColor,
     this.contentPadding,
     this.customValidationCallback,
+    this.autofocus = false,
   }) : super(key: key);
 
   final String? Function(String, dynamic)? customValidationCallback;
   final Color? activeColor;
+  final bool autofocus;
   final AutovalidateMode autovalidateMode;
   final BusinessObjectBase businessObjectBase;
   final Color? checkColor;
@@ -106,6 +108,7 @@ class _OceanCheckboxFormFieldState extends State<OceanCheckboxFormField> {
   @override
   Widget build(BuildContext context) {
     return CheckboxListTile(
+      autofocus: widget.autofocus,
       activeColor: widget.activeColor,
       checkColor: widget.checkColor,
       contentPadding: widget.contentPadding,

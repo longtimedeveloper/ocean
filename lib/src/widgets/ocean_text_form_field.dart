@@ -14,21 +14,23 @@ class OceanTextFormField extends StatefulWidget {
     this.constraints,
     this.obscureText = false,
     this.showHideShowTextButton = false,
+    this.autofocus = false,
     this.readonly = false,
     this.enabled,
   }) : super(key: key);
 
   final String? Function(String, dynamic)? customValidationCallback;
+  final bool autofocus;
   final AutovalidateMode autovalidateMode;
   final BusinessObjectBase businessObjectBase;
   final BoxConstraints? constraints;
+  final bool? enabled;
   final bool obscureText;
   final String Function() propertyGetter;
   final String propertyName;
   final void Function(String) propertySetter;
-  final bool showHideShowTextButton;
   final bool readonly;
-  final bool? enabled;
+  final bool showHideShowTextButton;
 
   @override
   _OceanTextFormFieldState createState() => _OceanTextFormFieldState();
@@ -109,7 +111,7 @@ class _OceanTextFormFieldState extends State<OceanTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autofocus: (widget.businessObjectBase.activeRuleSet == ValidationConstants.insert && facade.autoFocus) ? true : false,
+      autofocus: widget.autofocus,
       keyboardType: facade.keyBoardType,
       focusNode: textFormFieldFocusNode,
       controller: controller,

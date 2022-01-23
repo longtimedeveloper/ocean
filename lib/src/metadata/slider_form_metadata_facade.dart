@@ -3,10 +3,6 @@ import '../src.dart';
 class SliderFormMetadataFacade<T> extends FormMetadataFacadeBase<T, SliderPropertyMetadata> {
   SliderFormMetadataFacade(FormMetadataFacadeConfig<T> formMetadataFacadeConfig) : super(formMetadataFacadeConfig);
 
-  bool get autoFocus {
-    return propertyMetadata.autoFocus;
-  }
-
   int? get divisions {
     return propertyMetadata.divisions;
   }

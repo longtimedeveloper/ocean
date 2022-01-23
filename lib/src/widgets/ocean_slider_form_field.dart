@@ -16,12 +16,14 @@ class OceanSliderFormField extends StatefulWidget {
     this.onChangedCallback,
     this.onChangeStartCallback,
     this.onChangeEndCallback,
+    this.autofocus = false,
   }) : super(key: key);
 
   final Function(double)? onChangeStartCallback;
   final Function(double)? onChangeEndCallback;
   final Function(double)? onChangedCallback;
   final Color? activeColor;
+  final bool autofocus;
   final BusinessObjectBase businessObjectBase;
   final Color? inactiveColor;
   final double Function() propertyGetter;
@@ -68,7 +70,7 @@ class _OceanSliderFormFieldState extends State<OceanSliderFormField> {
       min: facade.min,
       max: facade.max,
       divisions: facade.divisions,
-      autofocus: facade.autoFocus,
+      autofocus: widget.autofocus,
       onChanged: (value) {
         setState(() {
           facade.setFormatedPropertyValue(value);

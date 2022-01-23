@@ -19,10 +19,12 @@ class OceanDropdownFormField<T> extends StatefulWidget {
     this.hint,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
     this.customValidationCallback,
+    this.autofocus = false,
   }) : super(key: key);
 
   final String? Function(String, dynamic)? customValidationCallback;
   final List<Widget> Function(BuildContext)? selectedItemBuilder;
+  final bool autofocus;
   final AutovalidateMode autovalidateMode;
   final BusinessObjectBase businessObjectBase;
   final Color? dropdownColor;
@@ -101,7 +103,7 @@ class _OceanDropdownFormFieldState<T> extends State<OceanDropdownFormField<T>> {
       itemHeight: widget.itemHeight,
       selectedItemBuilder: widget.selectedItemBuilder,
       autovalidateMode: widget.autovalidateMode,
-      autofocus: facade.autoFocus,
+      autofocus: widget.autofocus,
       hint: widget.hint,
     );
   }

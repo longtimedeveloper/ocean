@@ -11,10 +11,9 @@ class TextInputPropertyMetadata extends PropertyMetadataBase {
     this.helperText,
     this.hintText,
     this.errorMaxLines,
-    autoFocus = false,
     this.enableAutoCorrect = false,
     this.enableSuggestions = false,
-  }) : super(propertyName: propertyName, autoFocus: autoFocus) {
+  }) : super(propertyName: propertyName) {
     if (labelText == null || labelText.isEmpty) {
       this.labelText = propertyName.toTitleCase();
     } else {

@@ -61,6 +61,7 @@ class _UserRegistrationViewState extends State<UserRegistrationView> {
                 businessObjectBase: userRegistration,
                 propertySetter: (value) => userRegistration.userName = value,
                 propertyGetter: () => userRegistration.userName,
+                autofocus: true,
               ),
               OceanPasswordFormField(
                 propertyName: UserRegistration.passwordPropertyName,

@@ -7,7 +7,7 @@ class SliderPropertyMetadata extends PropertyMetadataBase {
     this.max = 1,
     this.divisions,
     autoFocus = false,
-  }) : super(propertyName: propertyName, autoFocus: autoFocus);
+  }) : super(propertyName: propertyName);
 
   final int? divisions;
   final double max;

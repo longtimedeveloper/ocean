@@ -75,6 +75,7 @@ class _SignInViewState extends State<SignInView> {
                       businessObjectBase: signIn,
                       propertySetter: (value) => signIn.email = value,
                       propertyGetter: () => signIn.email,
+                      autofocus: true,
                     ),
                     OceanTextFormField(
                       propertyName: SignIn.passwordPropertyName,

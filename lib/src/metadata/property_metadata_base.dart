@@ -1,9 +1,4 @@
 abstract class PropertyMetadataBase {
-  const PropertyMetadataBase({
-    required this.propertyName,
-    this.autoFocus = false,
-  });
-
-  final bool autoFocus;
+  const PropertyMetadataBase({required this.propertyName});
   final String propertyName;
 }

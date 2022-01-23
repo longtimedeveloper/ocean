@@ -4,10 +4,6 @@ import '../src.dart';
 class TextInputFormMetadataFacade<T> extends FormMetadataFacadeBase<T, TextInputPropertyMetadata> {
   TextInputFormMetadataFacade(FormMetadataFacadeConfig<T> formMetadataFacadeConfig) : super(formMetadataFacadeConfig);
 
-  bool get autoFocus {
-    return propertyMetadata.autoFocus;
-  }
-
   bool get enableAutoCorrect {
     return propertyMetadata.enableAutoCorrect;
   }

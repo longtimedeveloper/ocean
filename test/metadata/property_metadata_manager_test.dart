@@ -27,7 +27,6 @@ void main() {
       maximumLength: 25,
       labelText: 'Last Name(s)',
       helperText: 'Help',
-      autoFocus: true,
       errorMaxLines: 5,
       hintText: 'Hint',
       keyBoardType: TextInputType.name,
@@ -43,7 +42,6 @@ void main() {
     expect(fnResult!.propertyName, 'firstName');
     expect(fnResult.labelText, 'First Name');
     expect(fnResult.helperText, null);
-    expect(fnResult.autoFocus, false);
     expect(fnResult.errorMaxLines, null);
     expect(fnResult.hintText, null);
     expect(fnResult.keyBoardType, TextInputType.text);
@@ -54,7 +52,6 @@ void main() {
     expect(lnResult!.propertyName, 'lastName');
     expect(lnResult.labelText, 'Last Name(s)');
     expect(lnResult.helperText, 'Help');
-    expect(lnResult.autoFocus, true);
     expect(lnResult.errorMaxLines, 5);
     expect(lnResult.hintText, 'Hint');
     expect(lnResult.keyBoardType, TextInputType.name);

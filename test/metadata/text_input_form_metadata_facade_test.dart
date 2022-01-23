@@ -36,7 +36,6 @@ void main() {
     expect(sut.labelText, 'First Name');
     expect(sut.maximumLength, 25);
     expect(sut.isValid(), true);
-    expect(sut.autoFocus, false);
     expect(sut.getPropertyValue(), 'Test');
 
     sut.setFormatedPropertyValue('test');

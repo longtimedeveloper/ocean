@@ -8,7 +8,7 @@ class DropdownPropertyMetadata extends PropertyMetadataBase {
     this.errorMaxLines,
     this.notSelectedValue,
     autoFocus = false,
-  }) : super(propertyName: propertyName, autoFocus: autoFocus);
+  }) : super(propertyName: propertyName);
 
   final int? errorMaxLines;
   final String? helperText;

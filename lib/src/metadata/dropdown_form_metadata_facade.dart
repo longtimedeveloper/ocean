@@ -3,10 +3,6 @@ import '../src.dart';
 class DropdownFormMetadataFacade<T> extends FormMetadataFacadeBase<T, DropdownPropertyMetadata> {
   DropdownFormMetadataFacade(FormMetadataFacadeConfig<T> formMetadataFacadeConfig) : super(formMetadataFacadeConfig);
 
-  bool get autoFocus {
-    return propertyMetadata.autoFocus;
-  }
-
   int? get errorMaxLines {
     return propertyMetadata.errorMaxLines;
   }

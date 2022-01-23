@@ -24,11 +24,13 @@ class OceanPasswordFormField extends StatefulWidget {
     this.specialCharactersAllowed = SpecialCharacter.yes,
     this.passwordFieldKeyValueString,
     this.conformPasswordFieldKeyValueString,
+    this.autofocus = false,
   }) : super(
           key: key,
         );
 
   final String allowedSpecialCharacters;
+  final bool autofocus;
   final AutovalidateMode autovalidateMode;
   final BusinessObjectBase businessObjectBase;
   final String? conformPasswordFieldKeyValueString;
@@ -214,8 +216,7 @@ class _OceanPasswordFormFieldState extends State<OceanPasswordFormField> {
         TextFormField(
           key: passwordFieldKey,
           scrollPadding: const EdgeInsets.only(bottom: 200),
-          autofocus:
-              (widget.businessObjectBase.activeRuleSet == ValidationConstants.insert && facade.autoFocus) ? true : false,
+          autofocus: widget.autofocus,
           keyboardType: facade.keyBoardType,
           focusNode: focusNode,
           controller: passwordController,

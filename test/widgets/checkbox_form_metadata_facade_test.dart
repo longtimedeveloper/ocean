@@ -29,7 +29,6 @@ void main() {
 
     // assert
     expect(sut.isValid(), true);
-    expect(sut.autoFocus, true);
     expect(sut.subtitleText, null);
     expect(sut.titleText, 'Acknowledge Terms and Conditions');
     expect(sut.getPropertyValue(), true);

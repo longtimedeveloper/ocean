@@ -106,6 +106,7 @@ class _CustomerViewState extends State<CustomerView> {
                       businessObjectBase: demo,
                       propertySetter: (value) => demo.firstName = value,
                       propertyGetter: () => demo.firstName,
+                      autofocus: true,
                     ),
                     OceanTextFormField(
                       propertyName: Customer.lastNamePropertyName,

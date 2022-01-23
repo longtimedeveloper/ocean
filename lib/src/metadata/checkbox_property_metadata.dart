@@ -8,7 +8,7 @@ class CheckboxPropertyMetadata extends PropertyMetadataBase {
     String? titleText,
     this.subtitleText,
     autoFocus = false,
-  }) : super(propertyName: propertyName, autoFocus: autoFocus) {
+  }) : super(propertyName: propertyName) {
     if (titleText == null || titleText.isEmpty) {
       this.titleText = propertyName.toTitleCase();
     } else {
