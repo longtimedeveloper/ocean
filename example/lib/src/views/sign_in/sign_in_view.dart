@@ -87,7 +87,7 @@ class _SignInViewState extends State<SignInView> {
                     ),
                     Align(
                       alignment: Alignment.centerRight,
-                      child: CommandTextButtonAlwaysEnabled(
+                      child: CommandTextButton(
                         parentFormKey: formKey,
                         command: vm.forgotPasswordCommand,
                         buttonText: 'Forgot Password?',
@@ -107,7 +107,7 @@ class _SignInViewState extends State<SignInView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        CommandIconButtonAlwaysEnabled(
+                        CommandIconButton(
                           parentFormKey: formKey,
                           command: vm.signInWithGoogleCommand,
                           icon: const Icon(FontAwesomeIcons.google, color: Colors.white, size: 24),
@@ -115,7 +115,7 @@ class _SignInViewState extends State<SignInView> {
                           shape: const CircleBorder(),
                           backgroundColor: Colors.red,
                         ),
-                        CommandIconButtonAlwaysEnabled(
+                        CommandIconButton(
                           parentFormKey: formKey,
                           command: vm.signInWithTwitterCommand,
                           icon: const Icon(FontAwesomeIcons.twitter, color: Colors.white, size: 24),
@@ -123,7 +123,7 @@ class _SignInViewState extends State<SignInView> {
                           shape: const CircleBorder(),
                           backgroundColor: Colors.blue,
                         ),
-                        CommandIconButtonAlwaysEnabled(
+                        CommandIconButton(
                           parentFormKey: formKey,
                           command: vm.signInWithFacebookCommand,
                           icon: const Icon(FontAwesomeIcons.facebookF, color: Colors.white, size: 24),
@@ -141,7 +141,7 @@ class _SignInViewState extends State<SignInView> {
                           'Don\'t have an account?',
                           style: TextStyle(fontSize: 12, color: Colors.grey),
                         ),
-                        CommandTextButtonAlwaysEnabled(
+                        CommandTextButton(
                           parentFormKey: formKey,
                           command: vm.registerCommand,
                           buttonText: 'Register',

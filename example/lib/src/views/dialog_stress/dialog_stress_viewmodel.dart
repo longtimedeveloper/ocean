@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ocean/ocean.dart';
 import '../../src.dart';
 
-class DialogStressViewmodel extends ViewmodelBase with DeleteAlwaysEnabledCommand {
+class DialogStressViewmodel extends ViewmodelBase with DeleteCommand {
   DialogStressViewmodel();
 
   @override

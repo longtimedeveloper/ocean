@@ -1,16 +1,18 @@
 import 'package:flutter/foundation.dart';
 
 class CommandGeneric<T> {
-  CommandGeneric({required void Function(T) executeMethod}) {
+  CommandGeneric({required void Function(T) executeMethod, bool defaultCanExecuteState = false}) {
     _executeMethod = executeMethod;
+    _defaultCanExecuteState = defaultCanExecuteState;
   }
 
   ValueNotifier<bool>? _canExecuteNotifier;
+  late bool _defaultCanExecuteState;
   late final void Function(T) _executeMethod;
 
   bool get canExecute => canExecuteNotifier.value;
   ValueNotifier<bool> get canExecuteNotifier {
-    _canExecuteNotifier ??= ValueNotifier<bool>(false);
+    _canExecuteNotifier ??= ValueNotifier<bool>(_defaultCanExecuteState);
     return _canExecuteNotifier!;
   }
 

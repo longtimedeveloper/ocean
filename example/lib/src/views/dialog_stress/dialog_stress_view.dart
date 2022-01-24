@@ -41,7 +41,7 @@ class _DialogStressViewState extends State<DialogStressView> {
                   children: [
                     Container(
                       padding: const EdgeInsets.all(20.0),
-                      child: CommandElevatedButtonWithIconAlwaysEnabled(
+                      child: CommandElevatedButtonWithIcon(
                           parentFormKey: formKey,
                           command: vm.deleteCommand,
                           icon: const Icon(Icons.add_alarm),

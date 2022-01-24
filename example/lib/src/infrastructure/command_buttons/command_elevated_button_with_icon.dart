@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:ocean/ocean.dart';
 
-class CommandOutlineButton extends StatelessWidget {
-  const CommandOutlineButton({
+class CommandElevatedButtonWithIcon extends StatelessWidget {
+  const CommandElevatedButtonWithIcon({
     Key? key,
     required this.parentFormKey,
     required this.command,
-    required this.buttonText,
-    this.fontSize,
-    this.buttonTextColor,
-    this.buttonTextDisabledColor,
+    required this.icon,
+    required this.labelText,
     this.buttonKey,
     this.style,
+    this.labelFontSize,
+    this.labelColor,
+    this.labelDisabledColor,
     this.focusNode,
     this.autofocus = false,
-    this.clipBehavior = Clip.none,
   }) : super(key: key);
 
   final bool autofocus;
   final Key? buttonKey;
-  final String buttonText;
-  final Color? buttonTextColor;
-  final Color? buttonTextDisabledColor;
-  final Clip clipBehavior;
   final Command command;
   final FocusNode? focusNode;
-  final double? fontSize;
+  final Widget icon;
+  final Color? labelColor;
+  final Color? labelDisabledColor;
+  final double? labelFontSize;
+  final String labelText;
   final GlobalKey<FormState> parentFormKey;
   final ButtonStyle? style;
 
@@ -41,17 +41,17 @@ class CommandOutlineButton extends StatelessWidget {
     return ValueListenableBuilder<bool>(
       valueListenable: command.canExecuteNotifier,
       builder: (context, __, _) {
-        return OutlinedButton(
+        return ElevatedButton.icon(
           key: buttonKey,
-          style: style,
           focusNode: focusNode,
           autofocus: autofocus,
-          clipBehavior: clipBehavior,
-          child: Text(
-            buttonText,
+          icon: icon,
+          style: style,
+          label: Text(
+            labelText,
             style: TextStyle(
-              fontSize: fontSize,
-              color: command.canExecute ? buttonTextColor : buttonTextDisabledColor,
+              fontSize: labelFontSize,
+              color: command.canExecute ? labelColor : labelDisabledColor,
             ),
           ),
           onPressed: command.canExecute ? executeOnPressed : null,

@@ -5,11 +5,11 @@ import '../../src.dart';
 class SignInViewmodel extends ViewmodelBase
     with
         SignInCommand,
-        RegisterAlwaysEnabledCommand,
-        ForgotPasswordAlwaysEnabledCommand,
-        SignInWithGoogleAlwaysEnabledCommand,
+        RegisterCommand,
+        ForgotPasswordCommand,
+        SignInWithGoogleCommand,
         SignInWithTwitterAlwaysEnabledCommand,
-        SignInWithFacebookAlwaysEnabledCommand {
+        SignInWithFacebookCommand {
   SignInViewmodel();
 
   SignIn? _signIn;

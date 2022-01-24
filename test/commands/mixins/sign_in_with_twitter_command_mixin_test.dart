@@ -10,6 +10,10 @@ void main() {
       // act
       expect(sut.signInWithTwitterInvoked, false);
       sut.signInWithTwitterCommand.execute();
+      expect(sut.signInWithTwitterCommand.canExecute, true);
+      sut.signInWithTwitterCommand.execute();
+      sut.signInWithTwitterCommand.notifyCanExecuteChanged(false);
+      expect(sut.signInWithTwitterCommand.canExecute, false);
 
       // assert
       expect(sut.signInWithTwitterInvoked, true);
