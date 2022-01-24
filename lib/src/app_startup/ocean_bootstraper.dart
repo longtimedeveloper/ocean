@@ -12,7 +12,6 @@ class OceanBootStrapper {
     GetIt.instance.registerSingleton<SnackBarRegisterService>(GetIt.instance<SnackBarService>());
     GetIt.instance.registerSingleton<SnackBarShowService>(GetIt.instance<SnackBarService>());
     GetIt.instance.registerSingleton<SnackBarKeyService>(GetIt.instance<SnackBarService>());
-    GetIt.instance.registerSingleton<SnackBarBuildService>(GetIt.instance<SnackBarService>());
 
     GetIt.instance.registerSingleton<NavigatorService>(NavigatorService());
 

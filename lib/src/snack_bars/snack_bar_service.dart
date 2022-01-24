@@ -2,22 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:ocean/ocean.dart';
 import 'package:ocean/src/ocean_constants.dart';
 
-class SnackBarService implements SnackBarRegisterService, SnackBarShowService, SnackBarKeyService, SnackBarBuildService {
+class SnackBarService implements SnackBarRegisterService, SnackBarShowService, SnackBarKeyService {
   SnackBarService();
 
   final GlobalKey<ScaffoldMessengerState> _snackBarKey = GlobalKey<ScaffoldMessengerState>();
   final Map<dynamic, SnackBar Function(SnackBarRequest)> _snackBars = {};
-
-  @override
-  SnackBar buildSnackBar(SnackBarRequest snackBarRequest) {
-    if (!_snackBars.containsKey(snackBarRequest.key)) {
-      throw OceanException(MessageConstants.keyNotFoundFormat.formatString(StringConstants.snackBarBuilder));
-    }
-
-    final snackBarBuilder = _snackBars[snackBarRequest.key];
-    final snackBar = snackBarBuilder!.call(snackBarRequest);
-    return snackBar;
-  }
 
   @override
   void registerSnackbar({required dynamic key, required SnackBar Function(SnackBarRequest) snackBarBuilder}) {

@@ -32,30 +32,6 @@ void main() {
       expect(() => sut.showSnackBar(snackBarRequest), throwsA(const TypeMatcher<OceanException>()));
     });
 
-    test('build SnackBar throws if key not found.', () {
-      // arrange
-      final sut = GetIt.instance.get<SnackBarService>();
-      final snackBarRequest = SnackBarRequest(key: 'key', text: 'text');
-      // act
-
-      // assert
-      expect(() => sut.buildSnackBar(snackBarRequest), throwsA(const TypeMatcher<OceanException>()));
-    });
-
-    test('Can build snackbar', () {
-      // arrange
-      const String snackBarText = 'Hello SnackBar';
-      final sut = GetIt.instance.get<SnackBarService>();
-      sut.registerSnackbar(key: 'key', snackBarBuilder: createSnackBar);
-      final snackBarRequest = SnackBarRequest(key: 'key', text: snackBarText);
-
-      // act
-      final snackBar = sut.buildSnackBar(snackBarRequest);
-
-      // assert
-      expect(snackBar.key, const Key(snackBarKeyText));
-    });
-
     testWidgets('SnackBar control test', (WidgetTester tester) async {
       const String snackBarText = 'Hello SnackBar';
       const Key tapTarget = Key('tap-target');
@@ -63,8 +39,6 @@ void main() {
       service.registerSnackbar(key: 'key', snackBarBuilder: createSnackBar);
       final snackBarRequest = SnackBarRequest(key: 'key', text: snackBarText);
       final vm = ViewModel();
-      final snackBar = vm.buildSnackbar(snackBarRequest);
-      expect(snackBar.key, const Key(snackBarKeyText));
       await tester.pumpWidget(MaterialApp(
         scaffoldMessengerKey: service.snackBarKey,
         home: Scaffold(
@@ -103,4 +77,4 @@ SnackBar createSnackBar(SnackBarRequest snackBarRequest) {
   );
 }
 
-class ViewModel with ShowSnackBar, BuildSnackBar {}
+class ViewModel with ShowSnackBar {}
