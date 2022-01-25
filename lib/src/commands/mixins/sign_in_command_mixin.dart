@@ -5,7 +5,7 @@ mixin SignInCommand {
   Command? _command;
 
   Command get signInCommand {
-    _command ??= Command(executeMethod: () => signIn());
+    _command ??= Command(executeMethod: () => signIn(), defaultCanExecuteState: true);
     return _command!;
   }
 

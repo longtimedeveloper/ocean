@@ -5,7 +5,7 @@ mixin DeleteCommand {
   Command? _command;
 
   Command get deleteCommand {
-    _command ??= Command(executeMethod: () => delete());
+    _command ??= Command(executeMethod: () => delete(), defaultCanExecuteState: true);
     return _command!;
   }
 

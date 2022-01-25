@@ -44,7 +44,6 @@ class _SignInViewState extends State<SignInView> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Form(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
             key: formKey,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),

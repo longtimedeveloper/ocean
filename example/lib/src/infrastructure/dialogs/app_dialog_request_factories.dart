@@ -20,8 +20,7 @@ class AppDialogRequestFactories {
   static DialogRequest entityGuardViolation(BusinessObjectBase? businessObjectBase) {
     final dialogButtons = DialogButtons()..add(DialogButtonPosition.right, 'OK', true);
 
-    final text =
-        businessObjectBase == null ? 'The business object was null.' : 'The ${businessObjectBase.runtimeType} was invalid.';
+    const text = 'The business object was null.';
 
     return DialogRequest(
       key: DialogType.exception,

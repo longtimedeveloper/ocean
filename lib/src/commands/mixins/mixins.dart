@@ -1,7 +1,9 @@
 export 'cancel_command_mixin.dart';
 export 'delete_command_mixin.dart';
+export 'email_forgot_password_validation_code_command_mixin.dart';
 export 'forgot_password_command_mixin.dart';
 export 'register_command_mixin.dart';
+export 'reset_password_command_mixin.dart';
 export 'save_command_mixin.dart';
 export 'sign_in_command_mixin.dart';
 export 'sign_in_with_facebook_command_mixin.dart';

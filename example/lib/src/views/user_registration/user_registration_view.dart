@@ -51,7 +51,6 @@ class _UserRegistrationViewState extends State<UserRegistrationView> {
       ),
       body: SingleChildScrollView(
         child: Form(
-          autovalidateMode: AutovalidateMode.onUserInteraction,
           key: formKey,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -78,7 +77,6 @@ class _UserRegistrationViewState extends State<UserRegistrationView> {
                 propertyGetter: () => userRegistration.acknowledgeTerms,
                 secondary: const Icon(Icons.app_registration),
                 controlAffinity: ListTileControlAffinity.leading,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
               ),
             ]),
           ),

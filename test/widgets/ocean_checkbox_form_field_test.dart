@@ -133,7 +133,6 @@ class OceanCheckboxFormFieldView extends StatelessWidget {
               businessObjectBase: userRegistration,
               propertySetter: (value) => userRegistration.acknowledgeTerms = value,
               propertyGetter: () => userRegistration.acknowledgeTerms,
-              autovalidateMode: AutovalidateMode.always,
               subtitle: const Text('Test'),
               title: const Text('Test'),
             ),
@@ -143,7 +142,6 @@ class OceanCheckboxFormFieldView extends StatelessWidget {
               businessObjectBase: userRegistration,
               propertySetter: (value) => userRegistration.acknowledgeClubTerms = value,
               propertyGetter: () => userRegistration.acknowledgeClubTerms,
-              autovalidateMode: AutovalidateMode.always,
               customValidationCallback: (p0, p1) => p1 as bool ? null : 'Required',
             ),
             OceanCheckboxFormField(
@@ -152,7 +150,6 @@ class OceanCheckboxFormFieldView extends StatelessWidget {
               businessObjectBase: userRegistration,
               propertySetter: (value) => userRegistration.joinClub = value,
               propertyGetter: () => userRegistration.joinClub,
-              autovalidateMode: AutovalidateMode.always,
             ),
           ],
         ),

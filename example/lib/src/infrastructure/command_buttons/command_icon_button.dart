@@ -30,6 +30,7 @@ class CommandIconButton extends StatelessWidget {
   final ShapeBorder shape;
 
   void executeOnPressed() {
+    parentFormKey.currentState?.validate();
     parentFormKey.currentState?.save();
     if (command.canExecute) {
       command.execute();

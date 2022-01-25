@@ -9,7 +9,6 @@ class OceanCheckboxFormField extends StatefulWidget {
     required this.businessObjectBase,
     required this.propertySetter,
     required this.propertyGetter,
-    this.autovalidateMode = AutovalidateMode.onUserInteraction,
     this.secondary,
     this.subtitle,
     this.title,
@@ -24,7 +23,6 @@ class OceanCheckboxFormField extends StatefulWidget {
   final String? Function(String, dynamic)? customValidationCallback;
   final Color? activeColor;
   final bool autofocus;
-  final AutovalidateMode autovalidateMode;
   final BusinessObjectBase businessObjectBase;
   final Color? checkColor;
   final EdgeInsetsGeometry? contentPadding;

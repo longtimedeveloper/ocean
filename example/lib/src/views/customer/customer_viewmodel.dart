@@ -46,12 +46,10 @@ class CustomerViewmodel extends ViewmodelBase with SaveCommand {
   void dispose() {
     isLoadedNotifier.dispose();
     saveCommand.dispose();
-    unhookCustomer();
   }
 
   Future<Customer> getCustomer() async {
-    unhookCustomer();
-    await Future.delayed(const Duration(milliseconds: 1500));
+    await Future.delayed(const Duration(milliseconds: 1500)); // simulate loading from server
     final customer = Customer.create(activeRuleSet: ValidationConstants.update);
     customer.cellPhone = '555-555-1212';
     customer.email = 'dart@gmail.com';
@@ -59,8 +57,6 @@ class CustomerViewmodel extends ViewmodelBase with SaveCommand {
     customer.lastName = 'Flutter';
     customer.phone = '800-555-1212';
     customer.resetAfterSaving(); // Customer is now not dirty, so resetting to not dirty
-    customer.setIsValidCallback((value) => saveCommand.notifyCanExecuteChanged(value));
-    saveCommand.notifyCanExecuteChanged(customer.isValid);
     _customer = customer;
     isLoadedNotifier.value = true;
     return customer;
@@ -76,13 +72,6 @@ class CustomerViewmodel extends ViewmodelBase with SaveCommand {
 
   List<String> popupMenuItems() {
     return <String>[deleteCustomer, deleteCustomerSimplified];
-  }
-
-  @visibleForTesting
-  void unhookCustomer() {
-    if (_customer != null) {
-      _customer!.setIsValidCallback(null);
-    }
   }
 
   void _deleteCustomer() async {

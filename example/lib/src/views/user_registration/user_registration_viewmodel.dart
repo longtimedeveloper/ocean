@@ -36,19 +36,8 @@ class UserRegistrationViewmodel extends ViewmodelBase with SaveCommand {
   }
 
   UserRegistration getUserRegistration() {
-    unhookUserRegistration();
     final userRegistration = UserRegistration.create();
-    userRegistration.password = 'xRv7&A15ab';
-    userRegistration.userName = 'dartflutter';
-    userRegistration.setIsValidCallback((value) => saveCommand.notifyCanExecuteChanged(value));
     _userRegistration = userRegistration;
     return userRegistration;
-  }
-
-  @visibleForTesting
-  void unhookUserRegistration() {
-    if (_userRegistration != null) {
-      _userRegistration!.setIsValidCallback(null);
-    }
   }
 }

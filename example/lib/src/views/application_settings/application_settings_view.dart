@@ -57,7 +57,6 @@ class _ApplicationSettingsViewState extends State<ApplicationSettingsView> {
       ),
       body: SingleChildScrollView(
         child: Form(
-          autovalidateMode: AutovalidateMode.onUserInteraction,
           key: formKey,
           child: Padding(
             padding: const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 16),
@@ -175,7 +174,6 @@ class _ApplicationSettingsViewState extends State<ApplicationSettingsView> {
                 businessObjectBase: applicationSettings,
                 propertySetter: (value) => applicationSettings.themeName = value,
                 propertyGetter: () => applicationSettings.themeName,
-                autovalidateMode: AutovalidateMode.always,
                 items: vm.themeNames.map((String name) {
                   return DropdownMenuItem(
                     value: name,
@@ -188,7 +186,6 @@ class _ApplicationSettingsViewState extends State<ApplicationSettingsView> {
                 businessObjectBase: applicationSettings,
                 propertySetter: (value) => applicationSettings.defaultCategory = value,
                 propertyGetter: () => applicationSettings.defaultCategory,
-                autovalidateMode: AutovalidateMode.always,
                 items: vm.categories.map((CategoryItem item) {
                   return DropdownMenuItem(
                     value: item.value,

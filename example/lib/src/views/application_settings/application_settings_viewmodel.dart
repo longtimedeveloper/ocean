@@ -57,15 +57,11 @@ class ApplicationSettingsViewmodel extends ViewmodelBase with SaveCommand {
   String get viewTitle => 'Application Settings';
 
   void dispose() {
-    // isLoadedNotifier.dispose();
     saveCommand.dispose();
-    //unhookCustomer();
   }
 
   ApplicationSettings getApplicationSettings() {
     _applicationSettings ??= ApplicationSettings.create();
-    _applicationSettings!.setIsValidCallback((value) => saveCommand.notifyCanExecuteChanged(value));
-    saveCommand.notifyCanExecuteChanged(_applicationSettings!.isValid);
     return _applicationSettings!;
   }
 

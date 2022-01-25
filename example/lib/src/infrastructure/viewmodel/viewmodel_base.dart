@@ -10,8 +10,11 @@ abstract class ViewmodelBase with ShowSnackBar, ShowAppDialog, Logger {
 
   @protected
   Future<bool> entityGuardViolated(BusinessObjectBase? entity) async {
-    if (entity == null || entity.isNotValid) {
+    if (entity == null) {
       await showAppDialog(AppDialogRequestFactories.entityGuardViolation(entity));
+      return true;
+    }
+    if (entity.isNotValid) {
       return true;
     }
     return false;
