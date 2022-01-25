@@ -9,10 +9,10 @@ void main() {
 
       // act
       expect(sut.deleteInvoked, false);
-      expect(sut.deleteCommand.canExecute, false);
-      sut.deleteCommand.notifyCanExecuteChanged(true);
       expect(sut.deleteCommand.canExecute, true);
       sut.deleteCommand.execute();
+      sut.deleteCommand.notifyCanExecuteChanged(false);
+      expect(sut.deleteCommand.canExecute, false);
 
       // assert
       expect(sut.deleteInvoked, true);

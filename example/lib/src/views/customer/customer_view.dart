@@ -72,9 +72,6 @@ class _CustomerViewState extends State<CustomerView> {
       ),
       body: SingleChildScrollView(
         child: Form(
-          // // CRITICAL - if any property has a ComparePropertyValidator this
-          // // must be AutovalidateMode.always to ensure cross-property validation occurs!
-          // autovalidateMode: AutovalidateMode.always,
           key: formKey,
           child: Padding(
             padding: const EdgeInsets.all(8.0),

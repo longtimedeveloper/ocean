@@ -9,10 +9,10 @@ void main() {
 
       // act
       expect(sut.saveInvoked, false);
-      expect(sut.saveCommand.canExecute, false);
-      sut.saveCommand.notifyCanExecuteChanged(true);
       expect(sut.saveCommand.canExecute, true);
       sut.saveCommand.execute();
+      sut.saveCommand.notifyCanExecuteChanged(false);
+      expect(sut.saveCommand.canExecute, false);
 
       // assert
       expect(sut.saveInvoked, true);

@@ -9,10 +9,10 @@ void main() {
 
       // act
       expect(sut.signInInvoked, false);
-      expect(sut.signInCommand.canExecute, false);
-      sut.signInCommand.notifyCanExecuteChanged(true);
       expect(sut.signInCommand.canExecute, true);
       sut.signInCommand.execute();
+      sut.signInCommand.notifyCanExecuteChanged(false);
+      expect(sut.signInCommand.canExecute, false);
 
       // assert
       expect(sut.signInInvoked, true);
