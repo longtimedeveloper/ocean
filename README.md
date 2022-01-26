@@ -50,26 +50,6 @@ OceanTextFormField(
 ),
 ```
 
-### Valid State - No validation errors, Save button enabled.
-
-![](artifacts/validstate.jpg)
-
-### Invalid State - Validation errors, Save button disabled.
-
-User has deleted the first name text.  The validation errors, and Save button enabled/disabled are updated real-time as the user types.
-
-![](artifacts/invalidstate.jpg)
-
-### Valid State - No validation errors, Save button Enabled.
-
-The user has re-entered, 'dart' but has not yet left the field. After pressing the TAB key, or keyboard DONE key, or the Save button, or tapping on another field, the case correction and string formatting rules will be applied and the field updated.
-
-![](artifacts/validstatenocasecorrection.jpg)
-
-### Valid State - After applying the case correction and string formatting rules.
-
-![](artifacts/validstate.jpg)
-
 ## Why Did I Write Ocean?
 When developing any type of application my two highest priorities are:
 * Delight the customer, meet or exceed all business requirements.
