@@ -28,6 +28,20 @@ int _countOf(String value, String pattern) {
   return result;
 }
 
+extension RemoveLastCharacters on String {
+  String removeLastCharacter() {
+    return removeLastCharacters(1);
+  }
+
+  String removeLastCharacters(int countToRemove) {
+    final input = this;
+    if (input.length >= countToRemove) {
+      return substring(0, input.length - countToRemove);
+    }
+    return input;
+  }
+}
+
 extension StringContains on String {
   int countOfUpperCaseLetters() {
     return _countOf(this, RegExPatternConstants.upperCaseLetters);

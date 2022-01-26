@@ -66,5 +66,17 @@ void main() {
       expect('B'.isAllDigits(), false);
       expect('123B'.isAllDigits(), false);
     });
+
+    test('RemoveLastCharacters', () {
+      // arrange
+      const sut = 'flutter';
+
+      // act
+
+      // assert
+      expect(sut.removeLastCharacters(20), sut);
+      expect(sut.removeLastCharacters(2), 'flutt');
+      expect(sut.removeLastCharacter(), 'flutte');
+    });
   });
 }
