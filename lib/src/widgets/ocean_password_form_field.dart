@@ -99,8 +99,6 @@ class _OceanPasswordFormFieldState extends State<OceanPasswordFormField> {
       facade = TextInputFormMetadataFacade<String>(config);
     }
 
-    passwordController.value = TextEditingValue(text: widget.propertyGetter());
-    confirmController.value = TextEditingValue(text: widget.propertyGetter());
     focusNode = FocusNode();
     focusNode.addListener(updateModel);
     onPasswordChanged(widget.propertyGetter());
@@ -211,6 +209,8 @@ class _OceanPasswordFormFieldState extends State<OceanPasswordFormField> {
 
   @override
   Widget build(BuildContext context) {
+    passwordController.value = TextEditingValue(text: facade.getPropertyValue());
+    confirmController.value = TextEditingValue(text: facade.getPropertyValue());
     return Column(
       children: [
         TextFormField(

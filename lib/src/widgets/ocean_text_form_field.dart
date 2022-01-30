@@ -67,7 +67,6 @@ class _OceanTextFormFieldState extends State<OceanTextFormField> {
     } else {
       facade = TextInputFormMetadataFacade<String>(config);
     }
-    controller.value = TextEditingValue(text: widget.propertyGetter());
     textFormFieldFocusNode = FocusNode();
     textFormFieldFocusNode.addListener(updateModel);
 
@@ -110,6 +109,7 @@ class _OceanTextFormFieldState extends State<OceanTextFormField> {
 
   @override
   Widget build(BuildContext context) {
+    controller.value = TextEditingValue(text: facade.getPropertyValue());
     return TextFormField(
       autofocus: widget.autofocus,
       keyboardType: facade.keyBoardType,
