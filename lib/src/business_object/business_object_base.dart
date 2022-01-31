@@ -113,9 +113,7 @@ abstract class BusinessObjectBase {
         }
       }
     }
-    if (currentIsValid != isValid) {
-      _onIsValidChanged();
-    }
+
     final errorsText = getPropertyErrors(propertyName);
     // coverage:ignore-start
     if (DebuggingConstants.showDebuggingInformation) {
@@ -134,6 +132,9 @@ abstract class BusinessObjectBase {
     }
     // coverage:ignore-end
 
+    if (currentIsValid != isValid) {
+      _onIsValidChanged();
+    }
     return errorsText;
   }
 
@@ -248,7 +249,7 @@ abstract class BusinessObjectBase {
   void _onIsValidChanged() {
     if (_isValidCallback != null) {
       // this wrapper code, ensures that when this callback is invoked, it won't interrupt any build cycle currently in progress.
-      Future.delayed(Duration.zero, () async {
+      Future.delayed(const Duration(milliseconds: 2), () async {
         _isValidCallback!(isValid);
       });
     }
