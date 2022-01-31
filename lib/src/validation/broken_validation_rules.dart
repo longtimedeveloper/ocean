@@ -67,8 +67,12 @@ class BrokenValidationRules {
 
   bool remove(String propertyName) {
     if (_brokenRules.isNotEmpty && _brokenRules.containsKey(propertyName)) {
-      if (_brokenRules.remove(propertyName) != null) {
-        return true;
+      if (_brokenRules[propertyName]!.where((element) => element.manuallyAdded).isNotEmpty) {
+        _brokenRules[propertyName]!.removeWhere((element) => element.manuallyAdded == false);
+      } else {
+        if (_brokenRules.remove(propertyName) != null) {
+          return true;
+        }
       }
     }
     return false;

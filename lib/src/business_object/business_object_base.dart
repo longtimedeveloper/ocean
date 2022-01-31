@@ -50,7 +50,7 @@ abstract class BusinessObjectBase {
     if (brokenRulesForProperty.any((brokenRule) => brokenRule.ruleTypeName == ruleTypeName)) {
       return;
     }
-    final brokenRule = BrokenRule(ruleTypeName, propertyName, errorMessage);
+    final brokenRule = BrokenRule(ruleTypeName, propertyName, errorMessage, manuallyAdded: true);
     final validateResult = ValidateResult(brokenRule);
     _brokenValidationRules.add(validateResult.brokenRule!.ruleTypeName, validateResult.brokenRule!.propertyName,
         validateResult.brokenRule!.errorMessage);
