@@ -3,6 +3,15 @@ import 'package:ocean/ocean.dart';
 import '../models/models.dart';
 import '../services/services.dart';
 
+String? verifyTrue(String propertyName, value) {
+  if (value is bool) {
+    if (!value) {
+      return 'custom error';
+    }
+  }
+  return null;
+}
+
 void main() {
   bool hasBeenBootstrapped = false;
   setUp(() {
@@ -10,6 +19,27 @@ void main() {
       bootstrap();
       hasBeenBootstrapped = true;
     }
+  });
+
+  test('business object processExternalValidation', () {
+    // arrange
+    final sut = UserOptions.create();
+    sut.acknowledgeClubTerms = true;
+    sut.acknowledgeTerms = true;
+    sut.joinClub = true;
+    sut.joinMarketingMessages = true;
+    expect(sut.isValid, true);
+
+    // act
+    sut.setProcessExternalValidation(verifyTrue);
+    sut.joinClub = false;
+    expect(sut.isValid, false);
+    expect(sut.getPropertyErrors(UserOptions.joinClubPropertyName), 'custom error');
+    sut.joinClub = true;
+    expect(sut.getPropertyErrors(UserOptions.joinClubPropertyName), null);
+    expect(sut.isValid, true);
+
+    // assert
   });
 
   test('given same value, two property values match', () {

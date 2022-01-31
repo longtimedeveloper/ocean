@@ -14,12 +14,12 @@ class BrokenValidationRules {
     return !hasErrors;
   }
 
-  void add(String ruleTypeName, String propertyName, String errorMessage, {manuallyAdded = false}) {
+  void add(String ruleTypeName, String propertyName, String errorMessage) {
     if (_brokenRules[propertyName] != null) {
       _brokenRules[propertyName]!.add(BrokenRule(ruleTypeName, propertyName, errorMessage));
     } else {
       var brokenRulesList = <BrokenRule>[];
-      brokenRulesList.add(BrokenRule(ruleTypeName, propertyName, errorMessage, manuallyAdded: manuallyAdded));
+      brokenRulesList.add(BrokenRule(ruleTypeName, propertyName, errorMessage));
       _brokenRules[propertyName] = brokenRulesList;
     }
   }
@@ -67,12 +67,8 @@ class BrokenValidationRules {
 
   bool remove(String propertyName) {
     if (_brokenRules.isNotEmpty && _brokenRules.containsKey(propertyName)) {
-      if (_brokenRules[propertyName]!.where((element) => element.manuallyAdded).isNotEmpty) {
-        _brokenRules[propertyName]!.removeWhere((element) => element.manuallyAdded == false);
-      } else {
-        if (_brokenRules.remove(propertyName) != null) {
-          return true;
-        }
+      if (_brokenRules.remove(propertyName) != null) {
+        return true;
       }
     }
     return false;

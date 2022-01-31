@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import '../src.dart';
 
 abstract class BusinessObjectBase {
@@ -6,6 +5,8 @@ abstract class BusinessObjectBase {
 
   /// Provides, activeRuleSet
   static const String activeRuleSetPropertyName = 'activeRuleSet';
+
+  String? Function(String, dynamic)? _processExternalValidation;
 
   String _activeRuleSet = ValidationConstants.insert;
   final BrokenValidationRules _brokenValidationRules = BrokenValidationRules();
@@ -45,18 +46,20 @@ abstract class BusinessObjectBase {
     _activeRuleSet = value;
   }
 
+  /// This method is intended to be used internally within Ocean only.
+  /// User's of Ocean shouldn't use this.
+  /// For external validation use setProcessExternalValidation to add and remove an external callback.
   void addExternalValidationRuleBrokenRule(String propertyName, String ruleTypeName, String errorMessage) {
     var brokenRulesForProperty = _brokenValidationRules.getBrokenRulesForProperty(propertyName);
     if (brokenRulesForProperty.any((brokenRule) => brokenRule.ruleTypeName == ruleTypeName)) {
       return;
     }
-    final brokenRule = BrokenRule(ruleTypeName, propertyName, errorMessage, manuallyAdded: true);
+    final brokenRule = BrokenRule(ruleTypeName, propertyName, errorMessage);
     final validateResult = ValidateResult(brokenRule);
     _brokenValidationRules.add(
       validateResult.brokenRule!.ruleTypeName,
       validateResult.brokenRule!.propertyName,
       validateResult.brokenRule!.errorMessage,
-      manuallyAdded: validateResult.brokenRule!.manuallyAdded,
     );
     _onIsValidChanged();
   }
@@ -85,6 +88,7 @@ abstract class BusinessObjectBase {
             _brokenValidationRules.add(validateResult.brokenRule!.ruleTypeName, validateResult.brokenRule!.propertyName,
                 validateResult.brokenRule!.errorMessage);
           }
+          _checkExternalValidationRule(rule.propertyName, value);
         }
       }
     }
@@ -118,22 +122,24 @@ abstract class BusinessObjectBase {
       }
     }
 
+    _checkExternalValidationRule(propertyName, value);
+
     final errorsText = getPropertyErrors(propertyName);
     // coverage:ignore-start
-    if (DebuggingConstants.showDebuggingInformation) {
-      if (kDebugMode) {
-        print('Is Valid: ' + isValid.toString());
-        if (isNotValid) {
-          if (errorsText != null) {
-            print(propertyName + ' errors: ' + errorsText);
-          }
-          print('');
-          print('Entity Errors');
-          print(getEntityErrors());
-          print('');
-        }
-      }
-    }
+    // if (DebuggingConstants.showDebuggingInformation) {
+    //   if (kDebugMode) {
+    //     print('Is Valid: ' + isValid.toString());
+    //     if (isNotValid) {
+    //       if (errorsText != null) {
+    //         print(propertyName + ' errors: ' + errorsText);
+    //       }
+    //       print('');
+    //       print('Entity Errors');
+    //       print(getEntityErrors());
+    //       print('');
+    //     }
+    //   }
+    // }
     // coverage:ignore-end
 
     if (currentIsValid != isValid) {
@@ -202,6 +208,12 @@ abstract class BusinessObjectBase {
     _isValidCallback = isValidCallback;
   }
 
+  /// To added an an additional and external validation rule for one or more properties
+  /// supply a callback function to be called when this property is being validated.
+  void setProcessExternalValidation(String? Function(String, dynamic)? processExternalValidation) {
+    _processExternalValidation = processExternalValidation;
+  }
+
   /// runs all validation rules and returns newValue with approprite string format rules applied.
   dynamic setPropertyValue(String propertyName, dynamic currentValue, dynamic newValue) {
     if (propertyName.isEmpty) {
@@ -231,6 +243,15 @@ abstract class BusinessObjectBase {
 
   Map<String, dynamic> toJson();
 
+  void _checkExternalValidationRule(String propertyName, dynamic value) {
+    if (_processExternalValidation != null) {
+      final externalErrorMessage = _processExternalValidation!(propertyName, value);
+      if (externalErrorMessage != null) {
+        _brokenValidationRules.add("ExternalValidationRule", propertyName, externalErrorMessage);
+      }
+    }
+  }
+
   String _formatPropertyValueUsingStringFormatRule(Type type, String propertyName, String propertyValue) {
     propertyValue = propertyValue.trim();
     if (propertyValue.isEmpty) {
@@ -253,7 +274,7 @@ abstract class BusinessObjectBase {
   void _onIsValidChanged() {
     if (_isValidCallback != null) {
       // this wrapper code, ensures that when this callback is invoked, it won't interrupt any build cycle currently in progress.
-      Future.delayed(const Duration(milliseconds: 2), () async {
+      Future.delayed(Duration.zero, () async {
         _isValidCallback!(isValid);
       });
     }
