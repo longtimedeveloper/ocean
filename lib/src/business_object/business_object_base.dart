@@ -52,8 +52,12 @@ abstract class BusinessObjectBase {
     }
     final brokenRule = BrokenRule(ruleTypeName, propertyName, errorMessage, manuallyAdded: true);
     final validateResult = ValidateResult(brokenRule);
-    _brokenValidationRules.add(validateResult.brokenRule!.ruleTypeName, validateResult.brokenRule!.propertyName,
-        validateResult.brokenRule!.errorMessage);
+    _brokenValidationRules.add(
+      validateResult.brokenRule!.ruleTypeName,
+      validateResult.brokenRule!.propertyName,
+      validateResult.brokenRule!.errorMessage,
+      manuallyAdded: validateResult.brokenRule!.manuallyAdded,
+    );
     _onIsValidChanged();
   }
 

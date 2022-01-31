@@ -14,12 +14,12 @@ class BrokenValidationRules {
     return !hasErrors;
   }
 
-  void add(String ruleTypeName, String propertyName, String errorMessage) {
+  void add(String ruleTypeName, String propertyName, String errorMessage, {manuallyAdded = false}) {
     if (_brokenRules[propertyName] != null) {
       _brokenRules[propertyName]!.add(BrokenRule(ruleTypeName, propertyName, errorMessage));
     } else {
       var brokenRulesList = <BrokenRule>[];
-      brokenRulesList.add(BrokenRule(ruleTypeName, propertyName, errorMessage));
+      brokenRulesList.add(BrokenRule(ruleTypeName, propertyName, errorMessage, manuallyAdded: manuallyAdded));
       _brokenRules[propertyName] = brokenRulesList;
     }
   }
