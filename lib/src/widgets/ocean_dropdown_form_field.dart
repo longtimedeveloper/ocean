@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import '../src.dart';
 
 class OceanDropdownFormField<T> extends StatefulWidget {
+  /// Constructor for [OceanDropdownFormField]
+  /// will be improved later
+  /// [customValidationCallback] when not null, is used instead of any Validators set up for this [propertyName].
+  /// [additionalCustomValidationCallback] when not null, and the Validators set up for this [propertyName] return null, then this is invoked.
+  ///
   const OceanDropdownFormField({
     Key? key,
     required this.propertyName,
@@ -19,10 +24,16 @@ class OceanDropdownFormField<T> extends StatefulWidget {
     this.hint,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
     this.customValidationCallback,
+    this.additionalCustomValidationCallback,
     this.autofocus = false,
   }) : super(key: key);
 
+  /// [customValidationCallback] when not null, is used instead of any Validators set up for this [propertyName].
   final String? Function(String, dynamic)? customValidationCallback;
+
+  /// [additionalCustomValidationCallback] when not null, and the Validators set up for this [propertyName] return null, then this is invoked.
+  final String? Function(String, dynamic)? additionalCustomValidationCallback;
+
   final List<Widget> Function(BuildContext)? selectedItemBuilder;
   final bool autofocus;
   final AutovalidateMode autovalidateMode;
@@ -88,7 +99,11 @@ class _OceanDropdownFormFieldState<T> extends State<OceanDropdownFormField<T>> {
         if (widget.customValidationCallback != null) {
           return widget.customValidationCallback!(facade.propertyName, value);
         }
-        return facade.validateProperty(value);
+        final validatorResults = facade.validateProperty(value);
+        if ((validatorResults == null || validatorResults.isEmpty) && widget.additionalCustomValidationCallback != null) {
+          return widget.additionalCustomValidationCallback!(facade.propertyName, value);
+        }
+        return validatorResults;
       },
       onChanged: (value) {
         facade.setFormatedPropertyValue(value);

@@ -137,6 +137,7 @@ class OceanTextFormFieldView extends StatelessWidget {
               propertyGetter: () => demo.firstName,
               autovalidateMode: AutovalidateMode.always,
               showHideShowTextButton: true,
+              additionalCustomValidationCallback: (p0, p1) => null,
             ),
             OceanTextFormField(
               key: const Key(Demo.lastNamePropertyName),

@@ -144,6 +144,7 @@ class OceanDropdownFormFieldView extends StatelessWidget {
               propertySetter: (value) => applicationSettings.themeName = value,
               propertyGetter: () => applicationSettings.themeName,
               autovalidateMode: AutovalidateMode.always,
+              additionalCustomValidationCallback: (p0, p1) => null,
               items: themeNames.map((String name) {
                 return DropdownMenuItem(
                   value: name,

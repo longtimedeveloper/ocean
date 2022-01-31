@@ -34,9 +34,13 @@ class UserOptions extends BusinessObjectBase {
   /// Provides, joinClub
   static const String joinClubPropertyName = 'joinClub';
 
+  /// Provides, joinMarketingMessages
+  static const String joinMarketingMessagesPropertyName = 'joinMarketingMessages';
+
   bool _acknowledgeClubTerms = false;
   bool _acknowledgeTerms = false;
   bool _joinClub = false;
+  bool _joinMarketingMessages = false;
 
   @override
   Map<String, dynamic> toJson() => {
@@ -44,6 +48,7 @@ class UserOptions extends BusinessObjectBase {
         acknowledgeTermsPropertyName: acknowledgeTerms,
         acknowledgeClubTermsPropertyName: acknowledgeClubTerms,
         joinClubPropertyName: joinClub,
+        joinMarketingMessagesPropertyName: joinMarketingMessages,
       };
 
   bool get acknowledgeClubTerms {
@@ -58,6 +63,10 @@ class UserOptions extends BusinessObjectBase {
     return _joinClub;
   }
 
+  bool get joinMarketingMessages {
+    return _joinMarketingMessages;
+  }
+
   set acknowledgeClubTerms(bool value) {
     _acknowledgeClubTerms = setPropertyValue(acknowledgeClubTermsPropertyName, _acknowledgeClubTerms, value);
   }
@@ -68,5 +77,9 @@ class UserOptions extends BusinessObjectBase {
 
   set joinClub(bool value) {
     _joinClub = setPropertyValue(joinClubPropertyName, _joinClub, value);
+  }
+
+  set joinMarketingMessages(bool value) {
+    _joinMarketingMessages = setPropertyValue(joinMarketingMessagesPropertyName, _joinMarketingMessages, value);
   }
 }

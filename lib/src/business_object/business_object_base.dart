@@ -169,7 +169,7 @@ abstract class BusinessObjectBase {
         return buffer.toString().trimRight();
       }
     }
-    return null; // StringCharacterConstants.stringEmpty;
+    return null;
   }
 
   /// Gets the value of a property on this instance.

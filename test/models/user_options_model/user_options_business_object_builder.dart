@@ -14,6 +14,10 @@ class UserOptionsBusinessObjectBuilder extends BusinessObjectMetadataBuilderBase
         propertyName: UserOptions.acknowledgeClubTermsPropertyName, titleText: 'Acknowledge Club Terms'));
     wrapper.addMetadata(CheckboxPropertyMetadata(
         propertyName: UserOptions.joinClubPropertyName, titleText: 'Join Club', subtitleText: 'Club is fun!'));
+    wrapper.addMetadata(CheckboxPropertyMetadata(
+      propertyName: UserOptions.joinMarketingMessagesPropertyName,
+      titleText: 'Join Marketing Messages',
+    ));
   }
 
   @override

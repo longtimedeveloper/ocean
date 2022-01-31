@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import '../src.dart';
 
 class OceanCheckboxFormField extends StatefulWidget {
+  /// Constructor for [OceanCheckboxFormField]
+  /// will be improved later
+  /// [customValidationCallback] when not null, is used instead of any Validators set up for this [propertyName].
+  /// [additionalCustomValidationCallback] when not null, and the Validators set up for this [propertyName] return null, then this is invoked.
+  ///
   const OceanCheckboxFormField({
     Key? key,
     required this.propertyName,
@@ -17,10 +22,16 @@ class OceanCheckboxFormField extends StatefulWidget {
     this.checkColor,
     this.contentPadding,
     this.customValidationCallback,
+    this.additionalCustomValidationCallback,
     this.autofocus = false,
   }) : super(key: key);
 
+  /// [customValidationCallback] when not null, is used instead of any Validators set up for this [propertyName].
   final String? Function(String, dynamic)? customValidationCallback;
+
+  /// [additionalCustomValidationCallback] when not null, and the Validators set up for this [propertyName] return null, then this is invoked.
+  final String? Function(String, dynamic)? additionalCustomValidationCallback;
+
   final Color? activeColor;
   final bool autofocus;
   final BusinessObjectBase businessObjectBase;
@@ -66,8 +77,12 @@ class _OceanCheckboxFormFieldState extends State<OceanCheckboxFormField> {
     String? errorText;
     if (widget.customValidationCallback != null) {
       errorText = widget.customValidationCallback!(facade.propertyName, facade.getPropertyValue());
+    } else {
+      errorText = facade.validateProperty(facade.getPropertyValue());
+      if ((errorText == null || errorText.isEmpty) && widget.additionalCustomValidationCallback != null) {
+        errorText = widget.additionalCustomValidationCallback!(facade.propertyName, facade.getPropertyValue());
+      }
     }
-    errorText = facade.validateProperty(facade.getPropertyValue());
 
     if (errorText != null && errorText.isNotEmpty) {
       return Padding(
