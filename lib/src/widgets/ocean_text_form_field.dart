@@ -6,7 +6,6 @@ class OceanTextFormField extends StatefulWidget {
   /// Constructor for [OceanTextFormField]
   /// will be improved later
   /// [customValidationCallback] when not null, is used instead of any Validators set up for this [propertyName].
-  /// [additionalCustomValidationCallback] when not null, and the Validators set up for this [propertyName] return null, then this is invoked.
   ///
   const OceanTextFormField({
     Key? key,
@@ -16,7 +15,6 @@ class OceanTextFormField extends StatefulWidget {
     required this.propertyGetter,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
     this.customValidationCallback,
-    this.additionalCustomValidationCallback,
     this.constraints,
     this.obscureText = false,
     this.showHideShowTextButton = false,
@@ -27,9 +25,6 @@ class OceanTextFormField extends StatefulWidget {
 
   /// [customValidationCallback] when not null, is used instead of any Validators set up for this [propertyName].
   final String? Function(String, dynamic)? customValidationCallback;
-
-  /// [additionalCustomValidationCallback] when not null, and the Validators set up for this [propertyName] return null, then this is invoked.
-  final String? Function(String, dynamic)? additionalCustomValidationCallback;
 
   final bool autofocus;
   final AutovalidateMode autovalidateMode;
@@ -137,11 +132,7 @@ class _OceanTextFormFieldState extends State<OceanTextFormField> {
         if (widget.customValidationCallback != null) {
           return widget.customValidationCallback!(facade.propertyName, value);
         }
-        final validatorResults = facade.validateProperty(value);
-        if ((validatorResults == null || validatorResults.isEmpty) && widget.additionalCustomValidationCallback != null) {
-          return widget.additionalCustomValidationCallback!(facade.propertyName, value);
-        }
-        return validatorResults;
+        return facade.validateProperty(value);
       },
       onChanged: (value) {
         facade.setPropertyValue(value);

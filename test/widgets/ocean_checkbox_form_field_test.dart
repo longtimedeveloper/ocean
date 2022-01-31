@@ -51,20 +51,6 @@ void main() {
     await tester.pumpAndSettle();
     expect(userOptions.getPropertyErrors(UserOptions.joinClubPropertyName), null);
     expect(userOptions.joinClub, true);
-
-    final joinMarketingMessagesFieldFinder = find.byKey(const Key(UserOptions.joinMarketingMessagesPropertyName));
-    await tester.idle();
-    expect(joinMarketingMessagesFieldFinder, findsOneWidget);
-    expect(userOptions.getPropertyErrors(UserOptions.joinMarketingMessagesPropertyName), null);
-    expect(userOptions.joinMarketingMessages, false);
-    final joinMarketingMessagesErrorTitleFieldFinder =
-        find.descendant(of: joinMarketingMessagesFieldFinder, matching: find.text('Additional Custom'));
-    await tester.idle();
-    expect(joinMarketingMessagesErrorTitleFieldFinder, findsOneWidget);
-    await tester.tap(joinMarketingMessagesFieldFinder);
-    await tester.pumpAndSettle();
-    expect(userOptions.getPropertyErrors(UserOptions.joinMarketingMessagesPropertyName), null);
-    expect(userOptions.joinMarketingMessages, true);
   });
 
   testWidgets('OceanCheckboxFormField using getIt container.', (WidgetTester tester) async {
@@ -105,20 +91,6 @@ void main() {
     await tester.pumpAndSettle();
     expect(userOptions.getPropertyErrors(UserOptions.joinClubPropertyName), null);
     expect(userOptions.joinClub, true);
-
-    final joinMarketingMessagesFieldFinder = find.byKey(const Key(UserOptions.joinMarketingMessagesPropertyName));
-    await tester.idle();
-    expect(joinMarketingMessagesFieldFinder, findsOneWidget);
-    expect(userOptions.getPropertyErrors(UserOptions.joinMarketingMessagesPropertyName), null);
-    expect(userOptions.joinMarketingMessages, false);
-    final joinMarketingMessagesErrorTitleFieldFinder =
-        find.descendant(of: joinMarketingMessagesFieldFinder, matching: find.text('Additional Custom'));
-    await tester.idle();
-    expect(joinMarketingMessagesErrorTitleFieldFinder, findsOneWidget);
-    await tester.tap(joinMarketingMessagesFieldFinder);
-    await tester.pumpAndSettle();
-    expect(userOptions.getPropertyErrors(UserOptions.joinMarketingMessagesPropertyName), null);
-    expect(userOptions.joinMarketingMessages, true);
   });
 }
 
@@ -178,14 +150,6 @@ class OceanCheckboxFormFieldView extends StatelessWidget {
               businessObjectBase: userRegistration,
               propertySetter: (value) => userRegistration.joinClub = value,
               propertyGetter: () => userRegistration.joinClub,
-            ),
-            OceanCheckboxFormField(
-              key: const Key(UserOptions.joinMarketingMessagesPropertyName),
-              propertyName: UserOptions.joinMarketingMessagesPropertyName,
-              businessObjectBase: userRegistration,
-              propertySetter: (value) => userRegistration.joinMarketingMessages = value,
-              propertyGetter: () => userRegistration.joinMarketingMessages,
-              additionalCustomValidationCallback: (p0, p1) => p1 as bool ? null : 'Additional Custom',
             ),
           ],
         ),
