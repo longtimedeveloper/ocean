@@ -21,6 +21,7 @@ class OceanTextFormField extends StatefulWidget {
     this.autofocus = false,
     this.readonly = false,
     this.enabled,
+    this.isDense = false,
   }) : super(key: key);
 
   /// [customValidationCallback] when not null, is used instead of any Validators set up for this [propertyName].
@@ -31,6 +32,7 @@ class OceanTextFormField extends StatefulWidget {
   final BusinessObjectBase businessObjectBase;
   final BoxConstraints? constraints;
   final bool? enabled;
+  final bool isDense;
   final bool obscureText;
   final String Function() propertyGetter;
   final String propertyName;
@@ -104,6 +106,7 @@ class _OceanTextFormFieldState extends State<OceanTextFormField> {
       constraints: widget.constraints,
       errorMaxLines: facade.errorMaxLines,
       suffixIcon: buildPasswordSuffixIcon(),
+      isDense: widget.isDense,
     );
   }
 

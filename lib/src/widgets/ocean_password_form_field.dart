@@ -25,6 +25,7 @@ class OceanPasswordFormField extends StatefulWidget {
     this.passwordFieldKeyValueString,
     this.conformPasswordFieldKeyValueString,
     this.autofocus = false,
+    this.isDense = false,
   }) : super(
           key: key,
         );
@@ -37,6 +38,7 @@ class OceanPasswordFormField extends StatefulWidget {
   final BoxConstraints? constraints;
   final DigitCharacter digitCharactersAllowed;
   final int goldStandardForPasswordLength;
+  final bool isDense;
   final LowerCaseCharacter lowerCaseCharactersAllowed;
   final String? passwordFieldKeyValueString;
   final String Function() propertyGetter;
@@ -129,6 +131,7 @@ class _OceanPasswordFormFieldState extends State<OceanPasswordFormField> {
       enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Theme.of(context).primaryColor)),
       labelText: confirmPasswordLabel,
       constraints: widget.constraints,
+      isDense: widget.isDense,
     );
   }
 
@@ -156,6 +159,7 @@ class _OceanPasswordFormFieldState extends State<OceanPasswordFormField> {
       constraints: constraints,
       errorMaxLines: errorMaxLines,
       suffixIcon: buildPasswordSuffixIcon(),
+      isDense: widget.isDense,
     );
   }
 
