@@ -25,6 +25,7 @@ class OceanDropdownFormField<T> extends StatefulWidget {
     this.customValidationCallback,
     this.autofocus = false,
     this.isDense = false,
+    this.contentPadding,
   }) : super(key: key);
 
   /// [customValidationCallback] when not null, is used instead of any Validators set up for this [propertyName].
@@ -34,6 +35,7 @@ class OceanDropdownFormField<T> extends StatefulWidget {
   final bool autofocus;
   final AutovalidateMode autovalidateMode;
   final BusinessObjectBase businessObjectBase;
+  final EdgeInsetsGeometry? contentPadding;
   final Color? dropdownColor;
   final int elevation;
   final Widget? hint;
@@ -87,6 +89,7 @@ class _OceanDropdownFormFieldState<T> extends State<OceanDropdownFormField<T>> {
       errorMaxLines: facade.errorMaxLines,
       labelText: facade.labelText,
       isDense: widget.isDense,
+      contentPadding: widget.contentPadding,
     );
   }
 

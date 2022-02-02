@@ -22,6 +22,7 @@ class OceanTextFormField extends StatefulWidget {
     this.readonly = false,
     this.enabled,
     this.isDense = false,
+    this.contentPadding,
   }) : super(key: key);
 
   /// [customValidationCallback] when not null, is used instead of any Validators set up for this [propertyName].
@@ -31,6 +32,7 @@ class OceanTextFormField extends StatefulWidget {
   final AutovalidateMode autovalidateMode;
   final BusinessObjectBase businessObjectBase;
   final BoxConstraints? constraints;
+  final EdgeInsetsGeometry? contentPadding;
   final bool? enabled;
   final bool isDense;
   final bool obscureText;
@@ -107,6 +109,7 @@ class _OceanTextFormFieldState extends State<OceanTextFormField> {
       errorMaxLines: facade.errorMaxLines,
       suffixIcon: buildPasswordSuffixIcon(),
       isDense: widget.isDense,
+      contentPadding: widget.contentPadding,
     );
   }
 
