@@ -9,6 +9,7 @@ export 'src/infrastructure/infrastructure.dart';
 export 'src/metadata/metadata.dart';
 export 'src/navigator/navigator.dart';
 export 'src/ocean_exportable_constants.dart';
+export 'src/publish_subscribe/publish_subscribe.dart';
 export 'src/snack_bars/snack_bars.dart';
 export 'src/string_casing/string_casing.dart';
 export 'src/string_input/string_input.dart';

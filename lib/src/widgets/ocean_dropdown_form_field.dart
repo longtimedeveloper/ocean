@@ -80,7 +80,7 @@ class _OceanDropdownFormFieldState<T> extends State<OceanDropdownFormField<T>> {
     if (facade.getPropertyValue() == facade.notSelectedValue) {
       return null;
     }
-    facade.getPropertyValue();
+    return facade.getPropertyValue();
   }
 
   InputDecoration inputDecorationBuilder(BuildContext context) {

@@ -8,6 +8,7 @@ export 'metadata/metadata.dart';
 export 'navigator/navigator.dart';
 export 'ocean_constants.dart';
 export 'ocean_exportable_constants.dart';
+export 'publish_subscribe/publish_subscribe.dart';
 export 'snack_bars/snack_bars.dart';
 export 'string_casing/string_casing.dart';
 export 'string_input/string_input.dart';
