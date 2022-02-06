@@ -8,6 +8,7 @@ class Command {
 
   ValueNotifier<bool>? _canExecuteNotifier;
   late bool _defaultCanExecuteState;
+  bool _disposed = false;
   late final void Function() _executeMethod;
 
   bool get canExecute => canExecuteNotifier.value;
@@ -17,6 +18,7 @@ class Command {
   }
 
   void dispose() {
+    _disposed = true;
     if (_canExecuteNotifier != null) {
       _canExecuteNotifier!.dispose();
     }
@@ -29,6 +31,8 @@ class Command {
   }
 
   void notifyCanExecuteChanged(bool value) {
-    canExecuteNotifier.value = value;
+    if (!_disposed) {
+      canExecuteNotifier.value = value;
+    }
   }
 }

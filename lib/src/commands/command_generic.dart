@@ -8,6 +8,7 @@ class CommandGeneric<T> {
 
   ValueNotifier<bool>? _canExecuteNotifier;
   late bool _defaultCanExecuteState;
+  bool _disposed = false;
   late final void Function(T) _executeMethod;
 
   bool get canExecute => canExecuteNotifier.value;
@@ -17,6 +18,7 @@ class CommandGeneric<T> {
   }
 
   void dispose() {
+    _disposed = true;
     if (_canExecuteNotifier != null) {
       _canExecuteNotifier!.dispose();
     }
@@ -29,6 +31,8 @@ class CommandGeneric<T> {
   }
 
   void notifyCanExecuteChanged(bool value) {
-    canExecuteNotifier.value = value;
+    if (!_disposed) {
+      canExecuteNotifier.value = value;
+    }
   }
 }
