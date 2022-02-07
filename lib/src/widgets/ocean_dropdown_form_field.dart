@@ -25,6 +25,7 @@ class OceanDropdownFormField<T> extends StatefulWidget {
     this.customValidationCallback,
     this.autofocus = false,
     this.isDense = false,
+    this.isEnabled = true,
     this.contentPadding,
   }) : super(key: key);
 
@@ -41,6 +42,7 @@ class OceanDropdownFormField<T> extends StatefulWidget {
   final Widget? hint;
   final Widget? icon;
   final bool isDense;
+  final bool isEnabled;
   final double? itemHeight;
   final List<DropdownMenuItem<T>>? items;
   final double? menuMaxHeight;
@@ -102,9 +104,7 @@ class _OceanDropdownFormFieldState<T> extends State<OceanDropdownFormField<T>> {
         }
         return facade.validateProperty(value);
       },
-      onChanged: (value) {
-        facade.setFormatedPropertyValue(value);
-      },
+      onChanged: widget.isEnabled ? (value) => facade.setFormatedPropertyValue(value) : null,
       value: getValue(),
       items: widget.items,
       decoration: inputDecorationBuilder(context),
