@@ -7,6 +7,7 @@ abstract class BusinessObjectBase {
   static const String activeRuleSetPropertyName = 'activeRuleSet';
 
   String? Function(String, dynamic)? _processExternalValidation;
+  void Function(String, dynamic)? _onPropertyChanged;
 
   String _activeRuleSet = ValidationConstants.insert;
   final BrokenValidationRules _brokenValidationRules = BrokenValidationRules();
@@ -194,6 +195,12 @@ abstract class BusinessObjectBase {
     throw OceanArgumentException(FieldNameConstants.propertyName, MessageConstants.propertyNotFoundOnTypeFormat);
   }
 
+  void onPropertyChanged(String propertyName, dynamic newValue) {
+    if (_onPropertyChanged != null) {
+      _onPropertyChanged!.call(propertyName, newValue);
+    }
+  }
+
   void removeExternalValidationRuleBrokenRule(String propertyName, String ruleTypeName) {
     _brokenValidationRules.removeByRuleTypeName(ruleTypeName, propertyName);
     _onIsValidChanged();
@@ -206,6 +213,11 @@ abstract class BusinessObjectBase {
   /// supply a void callback function to be notified when this entity's isValid property changes
   void setIsValidCallback(Function(bool)? isValidCallback) {
     _isValidCallback = isValidCallback;
+  }
+
+  // Invoked on all property changes.
+  void setOnPropertyChangedCallback(void Function(String, dynamic)? onPropertyChanged) {
+    _onPropertyChanged = onPropertyChanged;
   }
 
   /// To added an an additional and external validation rule for one or more properties
@@ -237,7 +249,7 @@ abstract class BusinessObjectBase {
     }
 
     checkAllRulesForProperty(propertyName, workingValue);
-
+    onPropertyChanged(propertyName, newValue);
     return workingValue;
   }
 

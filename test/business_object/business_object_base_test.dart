@@ -42,6 +42,26 @@ void main() {
     // assert
   });
 
+  test('business object onPropertyChanged', () {
+    // arrange
+    final sut = UserOptions.create();
+    sut.acknowledgeClubTerms = true;
+    sut.acknowledgeTerms = true;
+    sut.joinClub = true;
+    sut.joinMarketingMessages = true;
+    expect(sut.isValid, true);
+    bool callbackCalled = false;
+    sut.setOnPropertyChangedCallback((p0, p1) {
+      callbackCalled = true;
+    });
+
+    // act
+    sut.joinClub = false;
+
+    // assert
+    expect(callbackCalled, true);
+  });
+
   test('given same value, two property values match', () {
     // arrange
     final sut = Demo.create();
