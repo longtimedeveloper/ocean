@@ -7,7 +7,7 @@ abstract class BusinessObjectBase {
   static const String activeRuleSetPropertyName = 'activeRuleSet';
 
   String? Function(String, dynamic)? _processExternalValidation;
-  void Function(String, dynamic)? _onPropertyChanged;
+  void Function(String, dynamic)? _onPropertyChangedCallback;
 
   String _activeRuleSet = ValidationConstants.insert;
   final BrokenValidationRules _brokenValidationRules = BrokenValidationRules();
@@ -126,22 +126,6 @@ abstract class BusinessObjectBase {
     _checkExternalValidationRule(propertyName, value);
 
     final errorsText = getPropertyErrors(propertyName);
-    // coverage:ignore-start
-    // if (DebuggingConstants.showDebuggingInformation) {
-    //   if (kDebugMode) {
-    //     print('Is Valid: ' + isValid.toString());
-    //     if (isNotValid) {
-    //       if (errorsText != null) {
-    //         print(propertyName + ' errors: ' + errorsText);
-    //       }
-    //       print('');
-    //       print('Entity Errors');
-    //       print(getEntityErrors());
-    //       print('');
-    //     }
-    //   }
-    // }
-    // coverage:ignore-end
 
     if (currentIsValid != isValid) {
       _onIsValidChanged();
@@ -195,12 +179,6 @@ abstract class BusinessObjectBase {
     throw OceanArgumentException(FieldNameConstants.propertyName, MessageConstants.propertyNotFoundOnTypeFormat);
   }
 
-  void onPropertyChanged(String propertyName, dynamic newValue) {
-    if (_onPropertyChanged != null) {
-      _onPropertyChanged!.call(propertyName, newValue);
-    }
-  }
-
   void removeExternalValidationRuleBrokenRule(String propertyName, String ruleTypeName) {
     _brokenValidationRules.removeByRuleTypeName(ruleTypeName, propertyName);
     _onIsValidChanged();
@@ -217,7 +195,7 @@ abstract class BusinessObjectBase {
 
   // Invoked on all property changes.
   void setOnPropertyChangedCallback(void Function(String, dynamic)? onPropertyChanged) {
-    _onPropertyChanged = onPropertyChanged;
+    _onPropertyChangedCallback = onPropertyChanged;
   }
 
   /// To added an an additional and external validation rule for one or more properties
@@ -249,7 +227,7 @@ abstract class BusinessObjectBase {
     }
 
     checkAllRulesForProperty(propertyName, workingValue);
-    onPropertyChanged(propertyName, newValue);
+    _onPropertyChanged(propertyName, newValue);
     return workingValue;
   }
 
@@ -288,6 +266,15 @@ abstract class BusinessObjectBase {
       // this wrapper code, ensures that when this callback is invoked, it won't interrupt any build cycle currently in progress.
       Future.delayed(Duration.zero, () async {
         _isValidCallback!(isValid);
+      });
+    }
+  }
+
+  void _onPropertyChanged(String propertyName, dynamic newValue) {
+    if (_onPropertyChangedCallback != null) {
+      // this wrapper code, ensures that when this callback is invoked, it won't interrupt any build cycle currently in progress.
+      Future.delayed(Duration.zero, () async {
+        _onPropertyChangedCallback!.call(propertyName, newValue);
       });
     }
   }
