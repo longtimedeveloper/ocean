@@ -1,6 +1,6 @@
 name: ocean
 description: Ocean for Flutter (Ocean), makes writing robust Flutter line-of-business applications easier, quicker, and with less code. The focus and greatest productivity gains are in data form development.
-version: 0.1.14
+version: 0.1.15
 homepage:
 
 environment:

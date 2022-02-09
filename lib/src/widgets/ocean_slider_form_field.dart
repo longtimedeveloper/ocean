@@ -63,6 +63,7 @@ class _OceanSliderFormFieldState extends State<OceanSliderFormField> {
   @override
   Widget build(BuildContext context) {
     return Slider(
+      key: widget.key,
       activeColor: widget.activeColor,
       inactiveColor: widget.inactiveColor,
       thumbColor: widget.thumbColor,
