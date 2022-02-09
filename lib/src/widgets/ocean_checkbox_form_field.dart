@@ -113,7 +113,6 @@ class _OceanCheckboxFormFieldState extends State<OceanCheckboxFormField> {
   @override
   Widget build(BuildContext context) {
     return CheckboxListTile(
-      key: widget.key,
       autofocus: widget.autofocus,
       activeColor: widget.activeColor,
       checkColor: widget.checkColor,

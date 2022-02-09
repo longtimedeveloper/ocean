@@ -7,7 +7,6 @@ abstract class BusinessObjectBase {
   static const String activeRuleSetPropertyName = 'activeRuleSet';
 
   String? Function(String, dynamic)? _processExternalValidation;
-  void Function(String, dynamic)? _onPropertyChangedCallback;
 
   String _activeRuleSet = ValidationConstants.insert;
   final BrokenValidationRules _brokenValidationRules = BrokenValidationRules();
@@ -193,11 +192,6 @@ abstract class BusinessObjectBase {
     _isValidCallback = isValidCallback;
   }
 
-  // Invoked on all property changes.
-  void setOnPropertyChangedCallback(void Function(String, dynamic)? onPropertyChanged) {
-    _onPropertyChangedCallback = onPropertyChanged;
-  }
-
   /// To added an an additional and external validation rule for one or more properties
   /// supply a callback function to be called when this property is being validated.
   void setProcessExternalValidation(String? Function(String, dynamic)? processExternalValidation) {
@@ -227,7 +221,6 @@ abstract class BusinessObjectBase {
     }
 
     checkAllRulesForProperty(propertyName, workingValue);
-    _onPropertyChanged(propertyName, newValue);
     return workingValue;
   }
 
@@ -266,15 +259,6 @@ abstract class BusinessObjectBase {
       // this wrapper code, ensures that when this callback is invoked, it won't interrupt any build cycle currently in progress.
       Future.delayed(Duration.zero, () async {
         _isValidCallback!(isValid);
-      });
-    }
-  }
-
-  void _onPropertyChanged(String propertyName, dynamic newValue) {
-    if (_onPropertyChangedCallback != null) {
-      // this wrapper code, ensures that when this callback is invoked, it won't interrupt any build cycle currently in progress.
-      Future.delayed(Duration.zero, () async {
-        _onPropertyChangedCallback!.call(propertyName, newValue);
       });
     }
   }

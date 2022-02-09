@@ -98,7 +98,6 @@ class _OceanDropdownFormFieldState<T> extends State<OceanDropdownFormField<T>> {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<T>(
-      key: widget.key,
       validator: (value) {
         if (widget.customValidationCallback != null) {
           return widget.customValidationCallback!(facade.propertyName, value);

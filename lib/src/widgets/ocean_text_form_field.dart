@@ -123,7 +123,6 @@ class _OceanTextFormFieldState extends State<OceanTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      key: widget.key,
       autofocus: widget.autofocus,
       keyboardType: facade.keyBoardType,
       focusNode: textFormFieldFocusNode,

@@ -92,7 +92,6 @@ class _OceanSwitchFormFieldState extends State<OceanSwitchFormField> {
   @override
   Widget build(BuildContext context) {
     return SwitchListTile(
-      key: widget.key,
       activeColor: widget.activeColor,
       activeThumbImage: widget.activeThumbImage,
       activeTrackColor: widget.activeTrackColor,
