@@ -106,7 +106,7 @@ class FormatText {
 
   String _formatPhone(String value, StringCase stringCasing, PhoneExtension phoneExtension) {
     value = value.trim();
-    if (value.isEmpty) {
+    if (value.isEmpty || value.length < 10) {
       return value;
     }
 
