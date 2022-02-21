@@ -53,4 +53,11 @@ class StringCasingCheck extends Comparable<StringCasingCheck> {
   int compareTo(StringCasingCheck other) {
     return lookFor.compareTo(other.lookFor);
   }
+
+  Map<String, dynamic> toJson() => {
+        idPropertyName: id,
+        lookForPropertyName: lookFor,
+        replaceWithPropertyName: replaceWith,
+        stringCasingMethodPropertyName: stringCasingMethod.toString().replaceFirst('StringCasingMethod.', ''),
+      };
 }

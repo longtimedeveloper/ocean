@@ -32,6 +32,17 @@ void main() {
     expect(result.stringCasingMethod, StringCasingMethod.regEx);
   });
 
+  test('StringCasingCheck.toJson works', () {
+    // arrange
+    final sut = StringCasingCheck(id: 'dummy', lookFor: 'Lookfor', replaceWith: 'LookFor');
+
+    // act
+    final result = sut.toJson().toString();
+
+    // assert
+    expect(result, '{id: dummy, lookFor: Lookfor, replaceWith: LookFor, stringCasingMethod: stringSearch}');
+  });
+
   test('List of StringCasingCheck sort correctly', () {
     // arrange
     final checks = <StringCasingCheck>[];
