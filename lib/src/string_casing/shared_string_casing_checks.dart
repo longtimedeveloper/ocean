@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'package:uuid/uuid.dart';
 import 'string_casing.dart';
 import '../infrastructure/infrastructure.dart';
 import '../ocean_constants.dart';
@@ -36,49 +37,49 @@ class SharedStringCasingChecks {
 
   void loadDefaultChecks() {
     var stringCasingChecks = <StringCasingCheck>[];
-    stringCasingChecks.add(StringCasingCheck(lookFor: '.Com ', replaceWith: '.com '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: '.Com.', replaceWith: '.com.'));
-    stringCasingChecks.add(StringCasingCheck(lookFor: '.net ', replaceWith: '.NET '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: '.net.', replaceWith: '.NET.'));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Aaa ', replaceWith: 'AAA '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'And ', replaceWith: 'and '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Api ', replaceWith: 'API '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Api.', replaceWith: 'API.'));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'C/O ', replaceWith: 'c/o '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Ios ', replaceWith: 'iOS '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Ios.', replaceWith: 'iOS.'));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Iphone ', replaceWith: 'iPhone '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Iphone.', replaceWith: 'iPhone.'));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Lc ', replaceWith: 'LC '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Lc.', replaceWith: 'LC.'));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Lc. ', replaceWith: 'LC. '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Lc.', replaceWith: 'LC.'));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Llc ', replaceWith: 'LLC '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Llc.', replaceWith: 'LLC.'));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Llc. ', replaceWith: 'LLC. '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Llc.', replaceWith: 'LLC.'));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Ne ', replaceWith: 'NE '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Nw ', replaceWith: 'NW '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Or ', replaceWith: 'or '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Po Box', replaceWith: 'PO Box'));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Rss ', replaceWith: 'RSS '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Rss.', replaceWith: 'RSS.'));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Se ', replaceWith: 'SE '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Ssid ', replaceWith: 'SSID '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Ssid.', replaceWith: 'SSID.'));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Sw ', replaceWith: 'SW '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Usa ', replaceWith: 'USA '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Usa.', replaceWith: 'USA.'));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Vpn ', replaceWith: 'VPN '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Vpn.', replaceWith: 'VPN.'));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Wpf ', replaceWith: 'WPF '));
-    stringCasingChecks.add(StringCasingCheck(lookFor: 'Wpf.', replaceWith: 'WPF.'));
-    stringCasingChecks
-        .add(StringCasingCheck(lookFor: 'Mac', replaceWith: 'Mac', stringCasingMethod: StringCasingMethod.regEx));
-    stringCasingChecks
-        .add(StringCasingCheck(lookFor: 'Mc', replaceWith: 'Mc', stringCasingMethod: StringCasingMethod.regEx));
-    stringCasingChecks
-        .add(StringCasingCheck(lookFor: 'O\'', replaceWith: 'O\'', stringCasingMethod: StringCasingMethod.regEx));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: '.Com ', replaceWith: '.com '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: '.Com.', replaceWith: '.com.'));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: '.net ', replaceWith: '.NET '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: '.net.', replaceWith: '.NET.'));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Aaa ', replaceWith: 'AAA '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'And ', replaceWith: 'and '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Api ', replaceWith: 'API '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Api.', replaceWith: 'API.'));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'C/O ', replaceWith: 'c/o '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Ios ', replaceWith: 'iOS '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Ios.', replaceWith: 'iOS.'));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Iphone ', replaceWith: 'iPhone '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Iphone.', replaceWith: 'iPhone.'));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Lc ', replaceWith: 'LC '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Lc.', replaceWith: 'LC.'));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Lc. ', replaceWith: 'LC. '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Lc.', replaceWith: 'LC.'));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Llc ', replaceWith: 'LLC '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Llc.', replaceWith: 'LLC.'));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Llc. ', replaceWith: 'LLC. '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Llc.', replaceWith: 'LLC.'));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Ne ', replaceWith: 'NE '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Nw ', replaceWith: 'NW '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Or ', replaceWith: 'or '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Po Box', replaceWith: 'PO Box'));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Rss ', replaceWith: 'RSS '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Rss.', replaceWith: 'RSS.'));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Se ', replaceWith: 'SE '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Ssid ', replaceWith: 'SSID '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Ssid.', replaceWith: 'SSID.'));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Sw ', replaceWith: 'SW '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Usa ', replaceWith: 'USA '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Usa.', replaceWith: 'USA.'));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Vpn ', replaceWith: 'VPN '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Vpn.', replaceWith: 'VPN.'));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Wpf ', replaceWith: 'WPF '));
+    stringCasingChecks.add(StringCasingCheck(id: const Uuid().v1(), lookFor: 'Wpf.', replaceWith: 'WPF.'));
+    stringCasingChecks.add(StringCasingCheck(
+        id: const Uuid().v1(), lookFor: 'Mac', replaceWith: 'Mac', stringCasingMethod: StringCasingMethod.regEx));
+    stringCasingChecks.add(StringCasingCheck(
+        id: const Uuid().v1(), lookFor: 'Mc', replaceWith: 'Mc', stringCasingMethod: StringCasingMethod.regEx));
+    stringCasingChecks.add(StringCasingCheck(
+        id: const Uuid().v1(), lookFor: 'O\'', replaceWith: 'O\'', stringCasingMethod: StringCasingMethod.regEx));
 
     _internalStringCasingChecks = stringCasingChecks;
     _updateUnmodifiableListViewStringCasingChecks();

@@ -1,6 +1,6 @@
 name: ocean
 description: Ocean for Flutter (Ocean), makes writing robust Flutter line-of-business applications easier, quicker, and with less code. The focus and greatest productivity gains are in data form development.
-version: 0.1.18
+version: 0.1.19
 homepage:
 
 environment:
@@ -11,13 +11,12 @@ dependencies:
   flutter:
     sdk: flutter
 
-  font_awesome_flutter: ^9.2.0
   intl: ^0.17.0
   mask_text_input_formatter: ^2.0.0
   mutex: ^3.0.0
   get_it: ^7.2.0
- 
- 
+  uuid: ^3.0.5
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

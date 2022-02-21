@@ -2,6 +2,7 @@ import 'package:ocean/src/src.dart';
 
 class StringCasingCheck extends Comparable<StringCasingCheck> {
   StringCasingCheck({
+    required this.id,
     required this.lookFor,
     required this.replaceWith,
     this.stringCasingMethod = StringCasingMethod.stringSearch,
@@ -24,11 +25,15 @@ class StringCasingCheck extends Comparable<StringCasingCheck> {
       }
     }
     return StringCasingCheck(
+      id: json[idPropertyName] as String,
       lookFor: json[lookForPropertyName] as String,
       replaceWith: json[replaceWithPropertyName] as String,
       stringCasingMethod: stringCasingMethod,
     );
   }
+
+  /// Provides, lookFor
+  static const String idPropertyName = 'id';
 
   /// Provides, lookFor
   static const String lookForPropertyName = 'lookFor';
@@ -39,6 +44,7 @@ class StringCasingCheck extends Comparable<StringCasingCheck> {
   /// Provides, stringCasingMethod
   static const String stringCasingMethodPropertyName = 'stringCasingMethod';
 
+  final String id;
   final String lookFor;
   final String replaceWith;
   final StringCasingMethod stringCasingMethod;
