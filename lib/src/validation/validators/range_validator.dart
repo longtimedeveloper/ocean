@@ -44,10 +44,10 @@ class RangeValidator extends ValidatorBase {
     this.upperRangeBoundaryType,
     this.upperValue, {
     RequiredEntry requiredEntry = RequiredEntry.yes,
-    String ruleSet = StringCharacterConstants.stringEmpty,
-    String friendlyName = StringCharacterConstants.stringEmpty,
-    String additionalMessage = StringCharacterConstants.stringEmpty,
-    String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+    String ruleSet = OceanStringCharacterConstants.stringEmpty,
+    String friendlyName = OceanStringCharacterConstants.stringEmpty,
+    String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+    String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
     AllowNullValue allowNullValue = AllowNullValue.no,
   }) : super(
           propertyName,

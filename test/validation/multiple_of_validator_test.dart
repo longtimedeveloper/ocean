@@ -12,10 +12,10 @@ void main() {
         String expectedMessage,
         bool expectedIsValid, {
         RequiredEntry requiredEntry = RequiredEntry.yes,
-        String ruleSet = StringCharacterConstants.stringEmpty,
-        String friendlyName = StringCharacterConstants.stringEmpty,
-        String additionalMessage = StringCharacterConstants.stringEmpty,
-        String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+        String ruleSet = OceanStringCharacterConstants.stringEmpty,
+        String friendlyName = OceanStringCharacterConstants.stringEmpty,
+        String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+        String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
         AllowNullValue allowNullValue = AllowNullValue.no,
       }) {
         // arrange
@@ -39,12 +39,13 @@ void main() {
         expect(result.isValid, expectedIsValid);
       }
 
-      testRunner('customerkind', 3, ValidationConstants.insert, 6, '', true);
-      testRunner('customerkind', 3, ValidationConstants.insert, 3, '', true);
-      testRunner('customerkind', 3, ValidationConstants.insert, 7, '', true, ruleSet: ValidationConstants.delete);
-      testRunner('customerkind', 3, ValidationConstants.insert, 7, 'Customerkind value 7 is not divisible by 3.', false);
-      testRunner('customerkind', 3, ValidationConstants.insert, null, 'Customerkind null value is not allowed.', false);
-      testRunner('customerkind', 3, ValidationConstants.insert, null, '', true, allowNullValue: AllowNullValue.yes);
+      testRunner('customerkind', 3, OceanValidationConstants.insert, 6, '', true);
+      testRunner('customerkind', 3, OceanValidationConstants.insert, 3, '', true);
+      testRunner('customerkind', 3, OceanValidationConstants.insert, 7, '', true, ruleSet: OceanValidationConstants.delete);
+      testRunner(
+          'customerkind', 3, OceanValidationConstants.insert, 7, 'Customerkind value 7 is not divisible by 3.', false);
+      testRunner('customerkind', 3, OceanValidationConstants.insert, null, 'Customerkind null value is not allowed.', false);
+      testRunner('customerkind', 3, OceanValidationConstants.insert, null, '', true, allowNullValue: AllowNullValue.yes);
     });
 
     test('exception thrown when property name is empty', () {

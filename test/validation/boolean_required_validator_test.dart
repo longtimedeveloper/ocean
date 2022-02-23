@@ -10,10 +10,10 @@ void main() {
         dynamic value,
         String expectedMessage,
         bool expectedIsValid, {
-        String ruleSet = StringCharacterConstants.stringEmpty,
-        String friendlyName = StringCharacterConstants.stringEmpty,
-        String additionalMessage = StringCharacterConstants.stringEmpty,
-        String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+        String ruleSet = OceanStringCharacterConstants.stringEmpty,
+        String friendlyName = OceanStringCharacterConstants.stringEmpty,
+        String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+        String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
       }) {
         // arrange
         final sut = BooleanRequiredValidator(propertyName,
@@ -34,11 +34,11 @@ void main() {
         expect(result.isValid, expectedIsValid);
       }
 
-      testRunner('iagree', ValidationConstants.insert, true, '', true);
-      testRunner('iagree', ValidationConstants.insert, false, 'Iagree is required to be checked.', false);
+      testRunner('iagree', OceanValidationConstants.insert, true, '', true);
+      testRunner('iagree', OceanValidationConstants.insert, false, 'Iagree is required to be checked.', false);
 
-      testRunner('iagree', ValidationConstants.insert, null, '', true, ruleSet: ValidationConstants.update);
-      testRunner('iagree', ValidationConstants.insert, null, 'Iagree null value is not allowed.', false);
+      testRunner('iagree', OceanValidationConstants.insert, null, '', true, ruleSet: OceanValidationConstants.update);
+      testRunner('iagree', OceanValidationConstants.insert, null, 'Iagree null value is not allowed.', false);
     });
 
     test('exception thrown when property name is empty', () {

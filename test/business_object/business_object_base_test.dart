@@ -111,7 +111,7 @@ void main() {
     expect(sut.isDirty, false);
     expect(sut.isNotDirty, true);
     expect(sut.getEntityErrors() == null, true);
-    expect(sut.activeRuleSet, ValidationConstants.insert);
+    expect(sut.activeRuleSet, OceanValidationConstants.insert);
     expect(sut.businessObjectRuntimeType.toString(), 'Demo');
     expect(sut.getPropertyValue(Demo.firstNamePropertyName), 'Dart');
     sut.dummy = 'HI';
@@ -154,7 +154,8 @@ void main() {
     externalErrors = sut.getEntityErrors();
     expect(externalErrors == null, true);
     expect(sut.isValid, true);
-    expect(() => sut.activeRuleSet = ValidationConstants.insertDeleteUpdate, throwsA(const TypeMatcher<OceanException>()));
+    expect(
+        () => sut.activeRuleSet = OceanValidationConstants.insertDeleteUpdate, throwsA(const TypeMatcher<OceanException>()));
     expect(() => sut.checkAllRulesForProperty('', 5), throwsA(const TypeMatcher<OceanException>()));
     expect(() => sut.setPropertyValue('', 'Test', null), throwsA(const TypeMatcher<OceanException>()));
   });

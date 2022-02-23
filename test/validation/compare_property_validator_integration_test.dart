@@ -16,7 +16,7 @@ void main() {
   group('ComparePropertyValidator', () {
     test('Compare first name and last name', () {
       void testRunner(String propertyName, String firstName, String lastName, String? expectedMessage,
-          {String businessObjectActiveRuleSet = ValidationConstants.insert}) {
+          {String businessObjectActiveRuleSet = OceanValidationConstants.insert}) {
         // arrange
         final sut = Demo.create();
         sut.activeRuleSet = businessObjectActiveRuleSet;
@@ -58,10 +58,10 @@ void main() {
     test('Skips when rule sets do not match', () {
       // arrange
       final sut = ComparePropertyValidator(Demo.firstNamePropertyName, Demo.lastNamePropertyName, ComparisionType.notEqual,
-          ruleSet: ValidationConstants.delete);
+          ruleSet: OceanValidationConstants.delete);
 
       // act
-      final result = sut.validate('abc', ValidationConstants.insert);
+      final result = sut.validate('abc', OceanValidationConstants.insert);
 
       // assert
       expect(result.isValid, true);
@@ -73,7 +73,7 @@ void main() {
           compareToPropertyFriendlyName: 'Dart');
 
       // act
-      final result = sut.validate('abc', ValidationConstants.insert, optionalValue: 'abcd');
+      final result = sut.validate('abc', OceanValidationConstants.insert, optionalValue: 'abcd');
 
       // assert
       expect(result.isValid, true);

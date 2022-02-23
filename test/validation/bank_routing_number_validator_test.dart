@@ -7,10 +7,10 @@ void main() {
       void testRunner(String propertyName, String businessObjectActiveRuleSet, dynamic value, String expectedMessage,
           bool expectedIsValid,
           {RequiredEntry requiredEntry = RequiredEntry.yes,
-          String ruleSet = StringCharacterConstants.stringEmpty,
-          String friendlyName = StringCharacterConstants.stringEmpty,
-          String additionalMessage = StringCharacterConstants.stringEmpty,
-          String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+          String ruleSet = OceanStringCharacterConstants.stringEmpty,
+          String friendlyName = OceanStringCharacterConstants.stringEmpty,
+          String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+          String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
           AllowNullValue allowNullValue = AllowNullValue.no}) {
         // arrange
         final sut = BankRoutingNumberValidator(propertyName,
@@ -33,35 +33,35 @@ void main() {
         expect(result.isValid, expectedIsValid);
       }
 
-      testRunner('routingNumber', ValidationConstants.insert, '074909661', '', true);
-      testRunner('routingNumber', ValidationConstants.insert, '074909669',
+      testRunner('routingNumber', OceanValidationConstants.insert, '074909661', '', true);
+      testRunner('routingNumber', OceanValidationConstants.insert, '074909669',
           'Routing Number 074909669 is not a valid bank routing number.', false);
-      testRunner('routingNumber', ValidationConstants.insert, '974909669',
+      testRunner('routingNumber', OceanValidationConstants.insert, '974909669',
           'Routing Number 974909669 is not a valid bank routing number. The first digit must be a 0 or a 1.', false);
       testRunner(
           'routingNumber',
-          ValidationConstants.insert,
+          OceanValidationConstants.insert,
           '0A4909669',
           'Routing Number 0A4909669 is not a valid bank routing number. All bank routing numbers are 9 digits in length.',
           false);
 
-      testRunner('routingNumber', ValidationConstants.insert, '', '', true, requiredEntry: RequiredEntry.no);
-      testRunner('routingNumber', ValidationConstants.insert, null, '', true,
+      testRunner('routingNumber', OceanValidationConstants.insert, '', '', true, requiredEntry: RequiredEntry.no);
+      testRunner('routingNumber', OceanValidationConstants.insert, null, '', true,
           requiredEntry: RequiredEntry.no, allowNullValue: AllowNullValue.yes);
-      testRunner('routingNumber', ValidationConstants.insert, null, 'Routing Number null value is not allowed.', false);
-      testRunner('routingNumber', ValidationConstants.insert, '', 'Routing Number is required.', false,
+      testRunner('routingNumber', OceanValidationConstants.insert, null, 'Routing Number null value is not allowed.', false);
+      testRunner('routingNumber', OceanValidationConstants.insert, '', 'Routing Number is required.', false,
           requiredEntry: RequiredEntry.yes);
 
-      testRunner('routingNumber', ValidationConstants.insert, '074909669', '', true,
-          ruleSet: ValidationConstants.update); // that would have returned invalid rule is skipped
+      testRunner('routingNumber', OceanValidationConstants.insert, '074909669', '', true,
+          ruleSet: OceanValidationConstants.update); // that would have returned invalid rule is skipped
 
-      testRunner('routingNumber', ValidationConstants.insert, '074909669',
+      testRunner('routingNumber', OceanValidationConstants.insert, '074909669',
           'Cool Routing Number 074909669 is not a valid bank routing number.', false,
           friendlyName: 'Cool Routing Number');
-      testRunner('routingNumber', ValidationConstants.insert, '074909669',
+      testRunner('routingNumber', OceanValidationConstants.insert, '074909669',
           'Routing Number 074909669 is not a valid bank routing number. Copy from your check!', false,
           additionalMessage: 'Copy from your check!');
-      testRunner('routingNumber', ValidationConstants.insert, '074909669', 'How about a valid routing number?', false,
+      testRunner('routingNumber', OceanValidationConstants.insert, '074909669', 'How about a valid routing number?', false,
           overrideErrorMessage: 'How about a valid routing number?');
     });
 

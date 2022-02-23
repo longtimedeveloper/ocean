@@ -8,7 +8,7 @@ abstract class BusinessObjectBase {
 
   String? Function(String, dynamic)? _processExternalValidation;
 
-  String _activeRuleSet = ValidationConstants.insert;
+  String _activeRuleSet = OceanValidationConstants.insert;
   final BrokenValidationRules _brokenValidationRules = BrokenValidationRules();
   bool _isDirty = false;
   ProcessStringFormatRules _processStringFormatRules = ProcessStringFormatRules.yes;
@@ -40,7 +40,7 @@ abstract class BusinessObjectBase {
   Function(bool)? _isValidCallback;
 
   set activeRuleSet(String value) {
-    if (value.contains(StringCharacterConstants.pipeSymbol)) {
+    if (value.contains(OceanStringCharacterConstants.pipeSymbol)) {
       throw OceanException(MessageConstants.activeRuleSetCanNotContainPipeSymobls);
     }
     _activeRuleSet = value;
@@ -139,15 +139,15 @@ abstract class BusinessObjectBase {
   String? getEntityErrors() {
     if (_brokenValidationRules.hasErrors) {
       var buffer = StringBuffer();
-      var previousPropertyName = StringCharacterConstants.stringEmpty;
+      var previousPropertyName = OceanStringCharacterConstants.stringEmpty;
       for (var brokenRule in _brokenValidationRules.getBrokenRules()) {
         if (previousPropertyName.isNotEmpty && brokenRule.propertyName != previousPropertyName) {
           previousPropertyName = brokenRule.propertyName;
-          buffer.writeln(StringCharacterConstants.stringEmpty);
+          buffer.writeln(OceanStringCharacterConstants.stringEmpty);
         } else if (previousPropertyName.isEmpty) {
           previousPropertyName = brokenRule.propertyName;
         }
-        buffer.write(brokenRule.errorMessage + StringCharacterConstants.doubleSpace);
+        buffer.write(brokenRule.errorMessage + OceanStringCharacterConstants.doubleSpace);
       }
       return buffer.toString().trimRight();
     }
@@ -158,7 +158,7 @@ abstract class BusinessObjectBase {
     if (_brokenValidationRules.hasErrors) {
       var buffer = StringBuffer();
       for (var brokenRule in _brokenValidationRules.getBrokenRulesForProperty(propertyName)) {
-        buffer.write(brokenRule.errorMessage + StringCharacterConstants.doubleSpace);
+        buffer.write(brokenRule.errorMessage + OceanStringCharacterConstants.doubleSpace);
       }
       if (buffer.isNotEmpty) {
         return buffer.toString().trimRight();
@@ -238,7 +238,7 @@ abstract class BusinessObjectBase {
   String _formatPropertyValueUsingStringFormatRule(Type type, String propertyName, String propertyValue) {
     propertyValue = propertyValue.trim();
     if (propertyValue.isEmpty) {
-      return StringCharacterConstants.stringEmpty;
+      return OceanStringCharacterConstants.stringEmpty;
     }
 
     var resultValue = propertyValue;

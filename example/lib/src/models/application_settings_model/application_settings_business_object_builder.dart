@@ -25,14 +25,14 @@ class ApplicationSettingsBusinessObjectBuilder extends BusinessObjectMetadataBui
       DropdownPropertyMetadata(
         propertyName: ApplicationSettings.themeNamePropertyName,
         labelText: 'Select Theme',
-        notSelectedValue: StringCharacterConstants.stringEmpty,
+        notSelectedValue: OceanStringCharacterConstants.stringEmpty,
       ),
     );
     wrapper.addMetadata(
       DropdownPropertyMetadata(
         propertyName: ApplicationSettings.defaultCategoryPropertyName,
         labelText: 'Select Default Category',
-        notSelectedValue: NumericConstants.zero,
+        notSelectedValue: OceanNumericConstants.zero,
       ),
     );
   }
@@ -43,10 +43,10 @@ class ApplicationSettingsBusinessObjectBuilder extends BusinessObjectMetadataBui
   @override
   void addSharedValidationRules(ValidationRulesManagerWrapper wrapper) {
     wrapper.addRule(CompareValueValidator(
-        ApplicationSettings.themeNamePropertyName, StringCharacterConstants.stringEmpty, ComparisionType.notEqual,
+        ApplicationSettings.themeNamePropertyName, OceanStringCharacterConstants.stringEmpty, ComparisionType.notEqual,
         overrideErrorMessage: '${ApplicationSettings.themeNamePropertyName.toTitleCase()} is required.'));
     wrapper.addRule(CompareValueValidator(
-        ApplicationSettings.defaultCategoryPropertyName, NumericConstants.zero, ComparisionType.greaterThan,
+        ApplicationSettings.defaultCategoryPropertyName, OceanNumericConstants.zero, ComparisionType.greaterThan,
         overrideErrorMessage: '${ApplicationSettings.defaultCategoryPropertyName.toTitleCase()} is required.'));
   }
 }

@@ -7,10 +7,10 @@ void main() {
       void testRunner(String propertyName, String businessObjectActiveRuleSet, dynamic value, String expectedMessage,
           bool expectedIsValid,
           {RequiredEntry requiredEntry = RequiredEntry.yes,
-          String ruleSet = StringCharacterConstants.stringEmpty,
-          String friendlyName = StringCharacterConstants.stringEmpty,
-          String additionalMessage = StringCharacterConstants.stringEmpty,
-          String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+          String ruleSet = OceanStringCharacterConstants.stringEmpty,
+          String friendlyName = OceanStringCharacterConstants.stringEmpty,
+          String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+          String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
           AllowNullValue allowNullValue = AllowNullValue.no,
           AllowMultiple allowMultiple = AllowMultiple.no}) {
         // arrange
@@ -34,14 +34,14 @@ void main() {
         expect(result.isValid, expectedIsValid);
       }
 
-      testRunner('customerkind', ValidationConstants.insert, 'IN', '', true);
-      testRunner(
-          'customerkind', ValidationConstants.insert, 'in', 'Customerkind state abbreviation (in) is not valid.', false);
-      testRunner('customerkind', ValidationConstants.insert, 'in', '', true, ruleSet: ValidationConstants.delete);
-      testRunner('customerkind', ValidationConstants.insert, null, 'Customerkind null value is not allowed.', false);
-      testRunner('customerkind', ValidationConstants.insert, null, '', true, allowNullValue: AllowNullValue.yes);
-      testRunner('customerkind', ValidationConstants.insert, '', '', true, requiredEntry: RequiredEntry.no);
-      testRunner('customerkind', ValidationConstants.insert, '', 'Customerkind is required.', false);
+      testRunner('customerkind', OceanValidationConstants.insert, 'IN', '', true);
+      testRunner('customerkind', OceanValidationConstants.insert, 'in', 'Customerkind state abbreviation (in) is not valid.',
+          false);
+      testRunner('customerkind', OceanValidationConstants.insert, 'in', '', true, ruleSet: OceanValidationConstants.delete);
+      testRunner('customerkind', OceanValidationConstants.insert, null, 'Customerkind null value is not allowed.', false);
+      testRunner('customerkind', OceanValidationConstants.insert, null, '', true, allowNullValue: AllowNullValue.yes);
+      testRunner('customerkind', OceanValidationConstants.insert, '', '', true, requiredEntry: RequiredEntry.no);
+      testRunner('customerkind', OceanValidationConstants.insert, '', 'Customerkind is required.', false);
     });
 
     test('exception thrown when property name is empty', () {
@@ -50,7 +50,7 @@ void main() {
 
     test('exception thrown when value is not a string', () {
       final sut = USStateAbbreviationValidator('propertyName');
-      expect(() => sut.validate(2.8, ValidationConstants.insert), throwsA(const TypeMatcher<OceanArgumentException>()));
+      expect(() => sut.validate(2.8, OceanValidationConstants.insert), throwsA(const TypeMatcher<OceanArgumentException>()));
     });
 
     test('exception thrown when businessObjectActiveRuleSet is empty', () {

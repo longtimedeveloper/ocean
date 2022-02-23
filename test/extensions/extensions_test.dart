@@ -27,8 +27,8 @@ void main() {
     });
 
     List<String> allowedSpecialCharactersList = <String>[];
-    for (var i = 0; i < StringWordConstants.defaultSpecialCharacters.length; i++) {
-      allowedSpecialCharactersList.add(StringWordConstants.defaultSpecialCharacters[i]);
+    for (var i = 0; i < OceanStringWordConstants.defaultSpecialCharacters.length; i++) {
+      allowedSpecialCharactersList.add(OceanStringWordConstants.defaultSpecialCharacters[i]);
     }
 
     test('countOfSpecialCharacters', () {

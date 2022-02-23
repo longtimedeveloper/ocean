@@ -11,10 +11,10 @@ void main() {
           upperCaseCharacter = UpperCaseCharacter.yes,
           specialCharacter = SpecialCharacter.yes,
           allowSequencesOrRepeatedCharacters = AllowSequencesOrRepeatedCharacters.no,
-          String ruleSet = StringCharacterConstants.stringEmpty,
-          String friendlyName = StringCharacterConstants.stringEmpty,
-          String additionalMessage = StringCharacterConstants.stringEmpty,
-          String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+          String ruleSet = OceanStringCharacterConstants.stringEmpty,
+          String friendlyName = OceanStringCharacterConstants.stringEmpty,
+          String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+          String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
           AllowNullValue allowNullValue = AllowNullValue.no}) {
         // arrange
         final sut = PasswordValidator(propertyName, minimumLength, maximumLength, allowedPasswordSpecialCharacters,
@@ -41,42 +41,43 @@ void main() {
         expect(result.isValid, expectedIsValid);
       }
 
-      testRunner(
-          'password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert, 'Z7&toyrZ', '', true);
-      testRunner('password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert, 'Z7toyrZ',
-          'Password must have at least one of these special characters !@#\$*&^-_+|()%', false);
-      testRunner('password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert, 'Z7%ADGA',
-          'Password must have at least one lower case letter', false);
-      testRunner('password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert, 'z7%zadga',
-          'Password must have at least one upper case letter', false);
-      testRunner('password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert, 'zz%zzZzz',
-          'Password must have at least one digit', false);
-      testRunner('password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert, 'zz',
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert,
+          'Z7&toyrZ', '', true);
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert,
+          'Z7toyrZ', 'Password must have at least one of these special characters !@#\$*&^-_+|()%', false);
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert,
+          'Z7%ADGA', 'Password must have at least one lower case letter', false);
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert,
+          'z7%zadga', 'Password must have at least one upper case letter', false);
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert,
+          'zz%zzZzz', 'Password must have at least one digit', false);
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert, 'zz',
           'Password is shorter than 6.', false);
-      testRunner('password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert,
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert,
           'zzasdfs&adfsadfsadfsdf', 'Password is longer than 12.', false);
-      testRunner('password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert, 'ZZZ&to125',
-          'Password must not have repeating patterns like: 123 321 abc CBA 111 zzz, etc.', false);
-      testRunner('password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert, 'Z123&to125',
-          'Password must not have repeating patterns like: 123 321 abc CBA 111 zzz, etc.', false);
-      testRunner('password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert, '1254789!Zr',
-          'Password must not have repeating patterns like: 123 321 abc CBA 111 zzz, etc.', false);
-      testRunner('password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert, '12547=<89!Zr',
-          'Password has these invalid special characters: =<', false);
-      testRunner('password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert, '12547<89!Zr',
-          'Password has this invalid special character: <', false);
-      testRunner('password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert, null,
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert,
+          'ZZZ&to125', 'Password must not have repeating patterns like: 123 321 abc CBA 111 zzz, etc.', false);
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert,
+          'Z123&to125', 'Password must not have repeating patterns like: 123 321 abc CBA 111 zzz, etc.', false);
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert,
+          '1254789!Zr', 'Password must not have repeating patterns like: 123 321 abc CBA 111 zzz, etc.', false);
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert,
+          '12547=<89!Zr', 'Password has these invalid special characters: =<', false);
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert,
+          '12547<89!Zr', 'Password has this invalid special character: <', false);
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert, null,
           'Password null value is not allowed.', false);
-      testRunner('password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert, null, '', true,
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert, null,
+          '', true,
           allowNullValue: AllowNullValue.yes);
-      testRunner('password', 6, 12, StringWordConstants.defaultSpecialCharacters, ValidationConstants.insert, 'zz%zzZzz><',
-          'Password must have at least one digit\nPassword has these invalid special characters: ><', false);
+      testRunner('password', 6, 12, OceanStringWordConstants.defaultSpecialCharacters, OceanValidationConstants.insert,
+          'zz%zzZzz><', 'Password must have at least one digit\nPassword has these invalid special characters: ><', false);
       testRunner(
           'password',
           6,
           12,
-          StringWordConstants.defaultSpecialCharacters,
-          ValidationConstants.insert,
+          OceanStringWordConstants.defaultSpecialCharacters,
+          OceanValidationConstants.insert,
           'zz%zzZzzz',
           'Password must have at least one digit\nPassword must not have repeating patterns like: 123 321 abc CBA 111 zzz, etc.',
           false);
@@ -84,8 +85,8 @@ void main() {
           'password',
           6,
           12,
-          StringWordConstants.defaultSpecialCharacters,
-          ValidationConstants.insert,
+          OceanStringWordConstants.defaultSpecialCharacters,
+          OceanValidationConstants.insert,
           'zz%zzABC',
           'Password must have at least one digit\nPassword must not have repeating patterns like: 123 321 abc CBA 111 zzz, etc.',
           false);

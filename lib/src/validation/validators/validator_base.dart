@@ -34,10 +34,10 @@ abstract class ValidatorBase {
   /// Throws [OceanArgumentException] if the propertyName is empty string.
   ValidatorBase(
     this.propertyName, {
-    this.ruleSet = StringCharacterConstants.stringEmpty,
-    this.friendlyName = StringCharacterConstants.stringEmpty,
-    this.additionalMessage = StringCharacterConstants.stringEmpty,
-    this.overrideErrorMessage = StringCharacterConstants.stringEmpty,
+    this.ruleSet = OceanStringCharacterConstants.stringEmpty,
+    this.friendlyName = OceanStringCharacterConstants.stringEmpty,
+    this.additionalMessage = OceanStringCharacterConstants.stringEmpty,
+    this.overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
     this.allowMultiple = AllowMultiple.no,
     this.requiredEntry = RequiredEntry.yes,
     this.allowNullValue = AllowNullValue.no,

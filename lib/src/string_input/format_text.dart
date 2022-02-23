@@ -54,9 +54,9 @@ class FormatText {
       case RemoveSpace.none:
         return value;
       case RemoveSpace.multipleSpaces:
-        return value.replaceAll(RegExp(RegExPatternConstants.spaces), StringCharacterConstants.singleSpace);
+        return value.replaceAll(RegExp(OceanRegExPatternConstants.spaces), OceanStringCharacterConstants.singleSpace);
       case RemoveSpace.allSpaces:
-        return value.replaceAll(RegExp(RegExPatternConstants.spaces), StringCharacterConstants.stringEmpty);
+        return value.replaceAll(RegExp(OceanRegExPatternConstants.spaces), OceanStringCharacterConstants.stringEmpty);
     }
   }
 
@@ -66,7 +66,7 @@ class FormatText {
       return value;
     }
 
-    value += StringCharacterConstants.singleSpace;
+    value += OceanStringCharacterConstants.singleSpace;
     for (var check in _stringCasingChecks) {
       switch (check.stringCasingMethod) {
         case StringCasingMethod.stringSearch:
@@ -75,7 +75,7 @@ class FormatText {
           }
           break;
         case StringCasingMethod.regEx:
-          var pattern = '${check.lookFor}${RegExPatternConstants.letters}';
+          var pattern = '${check.lookFor}${OceanRegExPatternConstants.letters}';
           var allMatches = RegExp(pattern).allMatches(value);
           var regExTemp = value;
           for (var match in allMatches) {
@@ -93,11 +93,11 @@ class FormatText {
 
   String _formatExtension(StringCase stringCasing, String value) {
     final stringCase = stringCasing.name.toLowerCase();
-    if (stringCase.contains(StringWordConstants.proper)) {
+    if (stringCase.contains(OceanStringWordConstants.proper)) {
       return _formatProper(value);
-    } else if (stringCase.contains(StringWordConstants.upper)) {
+    } else if (stringCase.contains(OceanStringWordConstants.upper)) {
       return value.toUpperCase();
-    } else if (stringCase.contains(StringWordConstants.lower)) {
+    } else if (stringCase.contains(OceanStringWordConstants.lower)) {
       return value.toLowerCase();
     } else {
       return value;
@@ -110,20 +110,20 @@ class FormatText {
       return value;
     }
 
-    String tempCasted = value + StringCharacterConstants.singleSpace;
+    String tempCasted = value + OceanStringCharacterConstants.singleSpace;
 
     try {
-      int intX = tempCasted.indexOf(StringCharacterConstants.singleSpace, 9);
+      int intX = tempCasted.indexOf(OceanStringCharacterConstants.singleSpace, 9);
       if (intX > -1) {
         String temp = value.substring(0, intX);
-        temp = temp.replaceAll('(', StringCharacterConstants.stringEmpty);
-        temp = temp.replaceAll(')', StringCharacterConstants.stringEmpty);
-        temp = temp.replaceAll(' ', StringCharacterConstants.stringEmpty);
-        temp = temp.replaceAll('-', StringCharacterConstants.stringEmpty);
-        temp = temp.replaceAll('.', StringCharacterConstants.stringEmpty);
+        temp = temp.replaceAll('(', OceanStringCharacterConstants.stringEmpty);
+        temp = temp.replaceAll(')', OceanStringCharacterConstants.stringEmpty);
+        temp = temp.replaceAll(' ', OceanStringCharacterConstants.stringEmpty);
+        temp = temp.replaceAll('-', OceanStringCharacterConstants.stringEmpty);
+        temp = temp.replaceAll('.', OceanStringCharacterConstants.stringEmpty);
 
         String characterCaseName = stringCasing.name;
-        String extension = StringCharacterConstants.stringEmpty;
+        String extension = OceanStringCharacterConstants.stringEmpty;
 
         BigInt? bigTemp = BigInt.tryParse(temp);
         if (bigTemp != null) {
@@ -141,7 +141,7 @@ class FormatText {
             tempCasted = formatter.maskText(bigTemp.toString());
           }
           if (phoneExtension == PhoneExtension.keep && extension.isNotEmpty) {
-            tempCasted = tempCasted + StringCharacterConstants.doubleSpace + _formatExtension(stringCasing, extension);
+            tempCasted = tempCasted + OceanStringCharacterConstants.doubleSpace + _formatExtension(stringCasing, extension);
           }
         }
       }
@@ -156,11 +156,11 @@ class FormatText {
     }
 
     value = value.toLowerCase();
-    final List<String> words = value.split(StringCharacterConstants.singleSpace);
+    final List<String> words = value.split(OceanStringCharacterConstants.singleSpace);
     for (int i = 0; i < words.length; i++) {
       words[i] = '${words[i][0].toUpperCase()}${words[i].substring(1)}';
     }
-    final output = words.join(StringCharacterConstants.singleSpace);
+    final output = words.join(OceanStringCharacterConstants.singleSpace);
     return _applyStringCasingChecks(output);
   }
 
@@ -172,7 +172,7 @@ class FormatText {
 
     var temp = value.toLowerCase();
     if (temp.endsWith('.')) {
-      temp = temp + StringCharacterConstants.singleSpace;
+      temp = temp + OceanStringCharacterConstants.singleSpace;
     }
     var sentences = temp.split('. ');
     var finalSentences = [];

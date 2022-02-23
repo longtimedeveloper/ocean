@@ -5,7 +5,7 @@ class OptionalDataRequest {
     _propertyName = propertyName;
   }
 
-  String _propertyName = StringCharacterConstants.stringEmpty;
+  String _propertyName = OceanStringCharacterConstants.stringEmpty;
 
   String get propertyName {
     return _propertyName;

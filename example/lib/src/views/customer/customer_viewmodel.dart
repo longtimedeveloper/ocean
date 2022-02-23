@@ -50,7 +50,7 @@ class CustomerViewmodel extends ViewmodelBase with SaveCommand {
 
   Future<Customer> getCustomer() async {
     await Future.delayed(const Duration(milliseconds: 1500)); // simulate loading from server
-    final customer = Customer.create(activeRuleSet: ValidationConstants.update);
+    final customer = Customer.create(activeRuleSet: OceanValidationConstants.update);
     customer.cellPhone = '555-555-1212';
     customer.email = 'dart@gmail.com';
     customer.firstName = 'Dart';

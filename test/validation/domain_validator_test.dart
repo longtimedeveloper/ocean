@@ -12,10 +12,10 @@ void main() {
         String? expectedMessage,
         bool expectedIsValid, {
         RequiredEntry requiredEntry = RequiredEntry.yes,
-        String ruleSet = StringCharacterConstants.stringEmpty,
-        String friendlyName = StringCharacterConstants.stringEmpty,
-        String additionalMessage = StringCharacterConstants.stringEmpty,
-        String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+        String ruleSet = OceanStringCharacterConstants.stringEmpty,
+        String friendlyName = OceanStringCharacterConstants.stringEmpty,
+        String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+        String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
         AllowNullValue allowNullValue = AllowNullValue.no,
       }) {
         // arrange
@@ -39,17 +39,18 @@ void main() {
         expect(result.isValid, expectedIsValid);
       }
 
-      testRunner('type', ['abc', 'def'], ValidationConstants.insert, 'abc', null, true);
-      testRunner('type', ['abc', 'def'], ValidationConstants.insert, 'abdc',
+      testRunner('type', ['abc', 'def'], OceanValidationConstants.insert, 'abc', null, true);
+      testRunner('type', ['abc', 'def'], OceanValidationConstants.insert, 'abdc',
           'Type abdc did not match any of the acceptable values abc, def.', false);
 
-      testRunner('type', ['abc', 'def'], ValidationConstants.insert, null, 'Type null value is not allowed.', false,
+      testRunner('type', ['abc', 'def'], OceanValidationConstants.insert, null, 'Type null value is not allowed.', false,
           allowNullValue: AllowNullValue.no);
-      testRunner('type', ['abc', 'def'], ValidationConstants.insert, null, null, true, allowNullValue: AllowNullValue.yes);
-      testRunner('type', ['abc', 'def'], ValidationConstants.insert, '', null, true, requiredEntry: RequiredEntry.no);
-      testRunner('type', ['abc', 'def'], ValidationConstants.insert, 'abdc', null, true,
-          ruleSet: ValidationConstants.update);
-      testRunner('type', ['abc', 'def'], ValidationConstants.insert, '', 'Type is required.', false,
+      testRunner('type', ['abc', 'def'], OceanValidationConstants.insert, null, null, true,
+          allowNullValue: AllowNullValue.yes);
+      testRunner('type', ['abc', 'def'], OceanValidationConstants.insert, '', null, true, requiredEntry: RequiredEntry.no);
+      testRunner('type', ['abc', 'def'], OceanValidationConstants.insert, 'abdc', null, true,
+          ruleSet: OceanValidationConstants.update);
+      testRunner('type', ['abc', 'def'], OceanValidationConstants.insert, '', 'Type is required.', false,
           requiredEntry: RequiredEntry.yes);
     });
 

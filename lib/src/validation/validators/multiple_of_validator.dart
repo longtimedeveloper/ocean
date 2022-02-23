@@ -35,10 +35,10 @@ class MultipleOfValidator extends ValidatorBase {
     String propertyName,
     this.multipleOf, {
     RequiredEntry requiredEntry = RequiredEntry.yes,
-    String ruleSet = StringCharacterConstants.stringEmpty,
-    String friendlyName = StringCharacterConstants.stringEmpty,
-    String additionalMessage = StringCharacterConstants.stringEmpty,
-    String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+    String ruleSet = OceanStringCharacterConstants.stringEmpty,
+    String friendlyName = OceanStringCharacterConstants.stringEmpty,
+    String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+    String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
     AllowNullValue allowNullValue = AllowNullValue.no,
   }) : super(
           propertyName,
@@ -50,7 +50,7 @@ class MultipleOfValidator extends ValidatorBase {
           allowNullValue: allowNullValue,
           requiredEntry: requiredEntry,
         ) {
-    if (multipleOf < NumericConstants.one) {
+    if (multipleOf < OceanNumericConstants.one) {
       throw OceanArgumentException(FieldNameConstants.multipleOf, MessageConstants.mustBeGreaterThanZero);
     }
   }

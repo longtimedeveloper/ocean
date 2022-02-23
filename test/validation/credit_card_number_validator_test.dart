@@ -7,10 +7,10 @@ void main() {
       void testRunner(String propertyName, String businessObjectActiveRuleSet, dynamic value, String expectedMessage,
           bool expectedIsValid,
           {RequiredEntry requiredEntry = RequiredEntry.yes,
-          String ruleSet = StringCharacterConstants.stringEmpty,
-          String friendlyName = StringCharacterConstants.stringEmpty,
-          String additionalMessage = StringCharacterConstants.stringEmpty,
-          String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+          String ruleSet = OceanStringCharacterConstants.stringEmpty,
+          String friendlyName = OceanStringCharacterConstants.stringEmpty,
+          String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+          String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
           AllowNullValue allowNullValue = AllowNullValue.no}) {
         // arrange
         final sut = CreditCardNumberValidator(propertyName,
@@ -33,22 +33,24 @@ void main() {
         expect(result.isValid, expectedIsValid);
       }
 
-      testRunner('creditcardnumber', ValidationConstants.insert, '5555555555554444', '', true);
-      testRunner('creditcardnumber', ValidationConstants.insert, '378282246310005', '', true);
-      testRunner('creditcardnumber', ValidationConstants.insert, '371449635398431', '', true);
-      testRunner('creditcardnumber', ValidationConstants.insert, '4111111111111111', '', true);
-      testRunner('creditcardnumber', ValidationConstants.insert, '6011111111111117', '', true);
-      testRunner('creditcardnumber', ValidationConstants.insert, '5555555555554449',
+      testRunner('creditcardnumber', OceanValidationConstants.insert, '5555555555554444', '', true);
+      testRunner('creditcardnumber', OceanValidationConstants.insert, '378282246310005', '', true);
+      testRunner('creditcardnumber', OceanValidationConstants.insert, '371449635398431', '', true);
+      testRunner('creditcardnumber', OceanValidationConstants.insert, '4111111111111111', '', true);
+      testRunner('creditcardnumber', OceanValidationConstants.insert, '6011111111111117', '', true);
+      testRunner('creditcardnumber', OceanValidationConstants.insert, '5555555555554449',
           'Creditcardnumber 5555555555554449 is not a valid credit card number.', false);
 
-      testRunner('creditcardnumber', ValidationConstants.insert, null, 'Creditcardnumber null value is not allowed.', false);
-      testRunner('creditcardnumber', ValidationConstants.insert, null, '', true,
+      testRunner(
+          'creditcardnumber', OceanValidationConstants.insert, null, 'Creditcardnumber null value is not allowed.', false);
+      testRunner('creditcardnumber', OceanValidationConstants.insert, null, '', true,
           requiredEntry: RequiredEntry.no, allowNullValue: AllowNullValue.yes);
-      testRunner('creditcardnumber', ValidationConstants.insert, '', '', true, requiredEntry: RequiredEntry.no);
-      testRunner('creditcardnumber', ValidationConstants.insert, '074909669', '', true, ruleSet: ValidationConstants.update);
-      testRunner('creditcardnumber', ValidationConstants.insert, '', 'Creditcardnumber is required.', false,
+      testRunner('creditcardnumber', OceanValidationConstants.insert, '', '', true, requiredEntry: RequiredEntry.no);
+      testRunner('creditcardnumber', OceanValidationConstants.insert, '074909669', '', true,
+          ruleSet: OceanValidationConstants.update);
+      testRunner('creditcardnumber', OceanValidationConstants.insert, '', 'Creditcardnumber is required.', false,
           requiredEntry: RequiredEntry.yes);
-      testRunner('creditcardnumber', ValidationConstants.insert, '60A1111111111117',
+      testRunner('creditcardnumber', OceanValidationConstants.insert, '60A1111111111117',
           'Creditcardnumber 60A1111111111117 is not a valid credit card number.  Only numeric input is allowed.', false);
     });
 

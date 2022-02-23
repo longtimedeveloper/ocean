@@ -38,10 +38,10 @@ class CompareValueValidator extends ValidatorBase with CompareValuesMixin {
     this.compareToValue,
     this.comparisionType, {
     RequiredEntry requiredEntry = RequiredEntry.yes,
-    String ruleSet = StringCharacterConstants.stringEmpty,
-    String friendlyName = StringCharacterConstants.stringEmpty,
-    String additionalMessage = StringCharacterConstants.stringEmpty,
-    String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+    String ruleSet = OceanStringCharacterConstants.stringEmpty,
+    String friendlyName = OceanStringCharacterConstants.stringEmpty,
+    String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+    String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
     AllowNullValue allowNullValue = AllowNullValue.no,
   }) : super(
           propertyName,

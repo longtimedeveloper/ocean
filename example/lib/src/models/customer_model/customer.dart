@@ -3,14 +3,14 @@ import 'package:ocean/ocean.dart';
 class Customer extends BusinessObjectBase {
   Customer._();
 
-  factory Customer.create({String activeRuleSet = ValidationConstants.insert}) {
+  factory Customer.create({String activeRuleSet = OceanValidationConstants.insert}) {
     final demo = Customer._();
     demo.activeRuleSet = activeRuleSet;
     demo.checkAllRules();
     return demo;
   }
 
-  factory Customer.fromMap(Map<String, dynamic> map, {String activeRuleSet = ValidationConstants.update}) {
+  factory Customer.fromMap(Map<String, dynamic> map, {String activeRuleSet = OceanValidationConstants.update}) {
     final demo = Customer._()
       .._cellPhone = map[cellPhonePropertyName]
       .._email = map[emailPropertyName]
@@ -72,11 +72,11 @@ class Customer extends BusinessObjectBase {
   /// Provides, phone
   static const String phonePropertyName = 'phone';
 
-  String _cellPhone = StringCharacterConstants.stringEmpty;
-  String _email = StringCharacterConstants.stringEmpty;
-  String _firstName = StringCharacterConstants.stringEmpty;
-  String _lastName = StringCharacterConstants.stringEmpty;
-  String _phone = StringCharacterConstants.stringEmpty;
+  String _cellPhone = OceanStringCharacterConstants.stringEmpty;
+  String _email = OceanStringCharacterConstants.stringEmpty;
+  String _firstName = OceanStringCharacterConstants.stringEmpty;
+  String _lastName = OceanStringCharacterConstants.stringEmpty;
+  String _phone = OceanStringCharacterConstants.stringEmpty;
 
   @override
   Map<String, dynamic> toJson() => {

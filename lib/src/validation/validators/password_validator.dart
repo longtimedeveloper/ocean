@@ -53,10 +53,10 @@ class PasswordValidator extends ValidatorBase {
     upperCaseCharacter = UpperCaseCharacter.yes,
     specialCharacter = SpecialCharacter.yes,
     allowSequencesOrRepeatedCharacters = AllowSequencesOrRepeatedCharacters.no,
-    String ruleSet = StringCharacterConstants.stringEmpty,
-    String friendlyName = StringCharacterConstants.stringEmpty,
-    String additionalMessage = StringCharacterConstants.stringEmpty,
-    String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+    String ruleSet = OceanStringCharacterConstants.stringEmpty,
+    String friendlyName = OceanStringCharacterConstants.stringEmpty,
+    String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+    String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
     AllowNullValue allowNullValue = AllowNullValue.no,
   }) : super(
           propertyName,
@@ -74,7 +74,7 @@ class PasswordValidator extends ValidatorBase {
         MessageConstants.allowedPasswordSpecialCharactersRequired,
       );
     }
-    if (minimumLength < NumericConstants.zero) {
+    if (minimumLength < OceanNumericConstants.zero) {
       throw OceanArgumentException(
         FieldNameConstants.minimumLength,
         MessageConstants.mustBeGreaterThanZero,
@@ -136,7 +136,7 @@ class PasswordValidator extends ValidatorBase {
 
     final targetValue = value.toString().trim();
 
-    if (_minimumLength > NumericConstants.zero && targetValue.length < _minimumLength) {
+    if (_minimumLength > OceanNumericConstants.zero && targetValue.length < _minimumLength) {
       return super
           .createFailedValidateResult(MessageConstants.isShorterThanFormat.formatString(displayName, _minimumLength));
     }
@@ -147,24 +147,26 @@ class PasswordValidator extends ValidatorBase {
 
     final buffer = StringBuffer();
 
-    if (_lowerCaseCharacter == LowerCaseCharacter.yes && targetValue.countOfLowerCaseLetters() == NumericConstants.zero) {
+    if (_lowerCaseCharacter == LowerCaseCharacter.yes &&
+        targetValue.countOfLowerCaseLetters() == OceanNumericConstants.zero) {
       buffer.write(MessageConstants.passwordOneLowerCaseLetter);
     }
 
-    if (_upperCaseCharacter == UpperCaseCharacter.yes && targetValue.countOfUpperCaseLetters() == NumericConstants.zero) {
+    if (_upperCaseCharacter == UpperCaseCharacter.yes &&
+        targetValue.countOfUpperCaseLetters() == OceanNumericConstants.zero) {
       buffer.write(MessageConstants.passwordOneUpperCaseLetter);
     }
 
-    if (_digitCharacter == DigitCharacter.yes && targetValue.countOfDigits() == NumericConstants.zero) {
+    if (_digitCharacter == DigitCharacter.yes && targetValue.countOfDigits() == OceanNumericConstants.zero) {
       buffer.write(MessageConstants.passwordOneDigit);
     }
 
     if (_specialCharacter == SpecialCharacter.yes &&
-        targetValue.countOfSpecialCharacters(_allowedPasswordSpecialCharactersList) == NumericConstants.zero) {
+        targetValue.countOfSpecialCharacters(_allowedPasswordSpecialCharactersList) == OceanNumericConstants.zero) {
       buffer.write(MessageConstants.passwordOneSpecialCharacterFormat.formatString(_allowedPasswordSpecialCharacters));
     }
 
-    var invalidSpecialCharactersMessage = StringCharacterConstants.stringEmpty;
+    var invalidSpecialCharactersMessage = OceanStringCharacterConstants.stringEmpty;
     var invalidSpecialCharacters = _invalidSpecialCharacterCheck(value);
     if (invalidSpecialCharacters.isNotEmpty) {
       if (invalidSpecialCharacters.length == 1) {
@@ -176,13 +178,13 @@ class PasswordValidator extends ValidatorBase {
       }
     }
 
-    var repeatedCharactersMessage = StringCharacterConstants.stringEmpty;
+    var repeatedCharactersMessage = OceanStringCharacterConstants.stringEmpty;
     if (_allowSequencesOrRepeatedCharacters == AllowSequencesOrRepeatedCharacters.no &&
         _hasThreeOrMoreConsecutiveNumbersOrLettersOrRepeatedNumbersOrLetters(targetValue)) {
       repeatedCharactersMessage = MessageConstants.passwordMustNotHaveRepeatingPatternsFormat.formatString(displayName);
     }
 
-    var validationErrorMessage = StringCharacterConstants.stringEmpty;
+    var validationErrorMessage = OceanStringCharacterConstants.stringEmpty;
     if (buffer.isNotEmpty || invalidSpecialCharactersMessage.isNotEmpty || repeatedCharactersMessage.isNotEmpty) {
       if (buffer.isNotEmpty) {
         var errorMessage = buffer.toString();
@@ -192,7 +194,7 @@ class PasswordValidator extends ValidatorBase {
 
       if (invalidSpecialCharactersMessage.isNotEmpty) {
         if (validationErrorMessage.isNotEmpty) {
-          validationErrorMessage += StringCharacterConstants.newLineCharacter + invalidSpecialCharactersMessage.trim();
+          validationErrorMessage += OceanStringCharacterConstants.newLineCharacter + invalidSpecialCharactersMessage.trim();
         } else {
           validationErrorMessage = invalidSpecialCharactersMessage.trim();
         }
@@ -200,7 +202,7 @@ class PasswordValidator extends ValidatorBase {
 
       if (repeatedCharactersMessage.isNotEmpty) {
         if (validationErrorMessage.isNotEmpty) {
-          validationErrorMessage += StringCharacterConstants.newLineCharacter + repeatedCharactersMessage.trim();
+          validationErrorMessage += OceanStringCharacterConstants.newLineCharacter + repeatedCharactersMessage.trim();
         } else {
           validationErrorMessage = repeatedCharactersMessage.trim();
         }
@@ -290,9 +292,9 @@ class PasswordValidator extends ValidatorBase {
 
   String _invalidSpecialCharacterCheck(String? value) {
     if (value == null || value.isEmpty) {
-      return StringCharacterConstants.stringEmpty;
+      return OceanStringCharacterConstants.stringEmpty;
     }
-    var foundInvalidCharacters = StringCharacterConstants.stringEmpty;
+    var foundInvalidCharacters = OceanStringCharacterConstants.stringEmpty;
     for (var i = 0; i < value.length; i++) {
       var c = value[i];
       if (c.isSingleLetterCharacter() || c.isSingleDigitCharacter()) {

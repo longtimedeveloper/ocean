@@ -64,7 +64,7 @@ void main() {
     await tester.idle();
     expect(firstNameFieldFinder, findsOneWidget);
 
-    final firstNameFieldIconButtonFinder = find.byKey(const Key(PasswordFieldConstants.passwordFieldIconButtonKey));
+    final firstNameFieldIconButtonFinder = find.byKey(const Key(OceanPasswordFieldConstants.passwordFieldIconButtonKey));
     await tester.idle();
     expect(firstNameFieldIconButtonFinder, findsOneWidget);
 

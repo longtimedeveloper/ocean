@@ -7,7 +7,7 @@ void main() {
       // arrange
 
       // act
-      final result = PasswordStrength.calculate('129496&zbZ*(', StringWordConstants.defaultSpecialCharacters, 12,
+      final result = PasswordStrength.calculate('129496&zbZ*(', OceanStringWordConstants.defaultSpecialCharacters, 12,
           LowerCaseCharacter.yes, UpperCaseCharacter.yes, DigitCharacter.yes, SpecialCharacter.yes);
 
       // assert
@@ -25,8 +25,8 @@ void main() {
       // arrange
 
       // act
-      final result = PasswordStrength.calculate('', StringWordConstants.defaultSpecialCharacters, 12, LowerCaseCharacter.yes,
-          UpperCaseCharacter.yes, DigitCharacter.yes, SpecialCharacter.yes);
+      final result = PasswordStrength.calculate('', OceanStringWordConstants.defaultSpecialCharacters, 12,
+          LowerCaseCharacter.yes, UpperCaseCharacter.yes, DigitCharacter.yes, SpecialCharacter.yes);
 
       // assert
       expect(result.passwordSafetyLevel, PasswordSafetyLevel.unsafe);
@@ -36,7 +36,7 @@ void main() {
       // arrange
 
       // act
-      final result = PasswordStrength.calculate('1296&zbZ*(', StringWordConstants.defaultSpecialCharacters, 12,
+      final result = PasswordStrength.calculate('1296&zbZ*(', OceanStringWordConstants.defaultSpecialCharacters, 12,
           LowerCaseCharacter.yes, UpperCaseCharacter.yes, DigitCharacter.yes, SpecialCharacter.yes);
 
       // assert
@@ -47,7 +47,7 @@ void main() {
       // arrange
 
       // act
-      final result = PasswordStrength.calculate('16&zbZ*(', StringWordConstants.defaultSpecialCharacters, 12,
+      final result = PasswordStrength.calculate('16&zbZ*(', OceanStringWordConstants.defaultSpecialCharacters, 12,
           LowerCaseCharacter.yes, UpperCaseCharacter.yes, DigitCharacter.yes, SpecialCharacter.yes);
 
       // assert

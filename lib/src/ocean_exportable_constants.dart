@@ -1,4 +1,4 @@
-class StringCharacterConstants {
+class OceanStringCharacterConstants {
   /// Provides, double white space
   static const String doubleSpace = '  ';
 
@@ -15,7 +15,7 @@ class StringCharacterConstants {
   static const String stringEmpty = '';
 }
 
-class StringWordConstants {
+class OceanStringWordConstants {
   /// Provides, !@#$*&^%()-_+|
   static const String defaultSpecialCharacters = '!@#\$*&^-_+|()%';
 
@@ -32,7 +32,7 @@ class StringWordConstants {
   static const String upper = 'upper';
 }
 
-class NumericConstants {
+class OceanNumericConstants {
   /// Provides, 9
   static const int bankRoutingNumberRequiredLength = 9;
 
@@ -46,7 +46,7 @@ class NumericConstants {
   static const int zero = 0;
 }
 
-class RegExPatternConstants {
+class OceanRegExPatternConstants {
   /// Provides, r'(?=[A-Z])'
   static const String capitalLetter = r'(?=[A-Z])';
 
@@ -92,7 +92,7 @@ class RegExPatternConstants {
   static const String usZipCode = r"^[a-z0-9][a-z0-9\- ]{0,10}[a-z0-9]$";
 }
 
-class PasswordFieldConstants {
+class OceanPasswordFieldConstants {
   /// Provides, Confirm
   static const String passwordConfirmLabelPrefix = 'Confirm';
 
@@ -106,7 +106,7 @@ class PasswordFieldConstants {
   static const int passwordFormFieldMinimumErrorMaxLines = 2;
 }
 
-class ValidationConstants {
+class OceanValidationConstants {
   /// Provides, Delete
   static const String delete = 'Delete';
 

@@ -32,10 +32,10 @@ class BankRoutingNumberValidator extends ValidatorBase {
   BankRoutingNumberValidator(
     String propertyName, {
     RequiredEntry requiredEntry = RequiredEntry.yes,
-    String ruleSet = StringCharacterConstants.stringEmpty,
-    String friendlyName = StringCharacterConstants.stringEmpty,
-    String additionalMessage = StringCharacterConstants.stringEmpty,
-    String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+    String ruleSet = OceanStringCharacterConstants.stringEmpty,
+    String friendlyName = OceanStringCharacterConstants.stringEmpty,
+    String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+    String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
     AllowNullValue allowNullValue = AllowNullValue.no,
   }) : super(
           propertyName,
@@ -89,15 +89,15 @@ class BankRoutingNumberValidator extends ValidatorBase {
     }
 
     int bankRoutingNumberLength = targetValue.length;
-    int bankRoutingNumberCalculationValue = NumericConstants.zero;
+    int bankRoutingNumberCalculationValue = OceanNumericConstants.zero;
 
-    if (bankRoutingNumberLength != NumericConstants.bankRoutingNumberRequiredLength || !targetValue.isAllDigits()) {
+    if (bankRoutingNumberLength != OceanNumericConstants.bankRoutingNumberRequiredLength || !targetValue.isAllDigits()) {
       return super.createFailedValidateResult(MessageConstants
           .isNotAValidBankRoutingNumberAllBankRoutingNumbersAreNineDigitsInLengthFormat
           .formatString(displayName, targetValue));
     }
 
-    if (int.parse(targetValue.substring(0, 1)) > NumericConstants.one) {
+    if (int.parse(targetValue.substring(0, 1)) > OceanNumericConstants.one) {
       return super.createFailedValidateResult(MessageConstants
           .isNotAValidBankRoutingNumberAllBankRoutingNumbersFirstDigitMustBeZeorOrOneFormat
           .formatString(displayName, targetValue));

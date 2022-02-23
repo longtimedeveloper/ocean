@@ -35,10 +35,10 @@ class RegularExpressionValidator extends ValidatorBase {
     String propertyName,
     RegularExpressionPatternType regularExpressionPatternType, {
     RequiredEntry requiredEntry = RequiredEntry.yes,
-    String ruleSet = StringCharacterConstants.stringEmpty,
-    String friendlyName = StringCharacterConstants.stringEmpty,
-    String additionalMessage = StringCharacterConstants.stringEmpty,
-    String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+    String ruleSet = OceanStringCharacterConstants.stringEmpty,
+    String friendlyName = OceanStringCharacterConstants.stringEmpty,
+    String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+    String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
     AllowNullValue allowNullValue = AllowNullValue.no,
   }) : super(
           propertyName,
@@ -51,7 +51,7 @@ class RegularExpressionValidator extends ValidatorBase {
           requiredEntry: requiredEntry,
         ) {
     _regularExpressionPatternType = regularExpressionPatternType;
-    _customRegularExpressionPattern = StringCharacterConstants.stringEmpty;
+    _customRegularExpressionPattern = OceanStringCharacterConstants.stringEmpty;
   }
 
   /// Constructor for [RegularExpressionValidator].
@@ -87,10 +87,10 @@ class RegularExpressionValidator extends ValidatorBase {
     String propertyName,
     String customRegularExpressionPattern, {
     RequiredEntry requiredEntry = RequiredEntry.yes,
-    String ruleSet = StringCharacterConstants.stringEmpty,
-    String friendlyName = StringCharacterConstants.stringEmpty,
-    String additionalMessage = StringCharacterConstants.stringEmpty,
-    String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+    String ruleSet = OceanStringCharacterConstants.stringEmpty,
+    String friendlyName = OceanStringCharacterConstants.stringEmpty,
+    String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+    String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
     AllowNullValue allowNullValue = AllowNullValue.no,
     AllowMultiple allowMultiple = AllowMultiple.no,
   }) : super(
@@ -158,32 +158,32 @@ class RegularExpressionValidator extends ValidatorBase {
             MessageConstants.regularExpressionDidNotMatchTheRequiredPatternFormat.formatString(displayName, pattern);
         break;
       case RegularExpressionPatternType.email:
-        pattern = RegExPatternConstants.email;
+        pattern = OceanRegExPatternConstants.email;
         brokenRuleMessage =
             MessageConstants.regularExpressionDidNotMatchTheRequiredEmailPatternFormat.formatString(displayName);
         break;
       case RegularExpressionPatternType.ipAddress:
-        pattern = RegExPatternConstants.ipAddress;
+        pattern = OceanRegExPatternConstants.ipAddress;
         brokenRuleMessage =
             MessageConstants.regularExpressionDidNotMatchTheRequiredIPAddressPatternFormat.formatString(displayName);
         break;
       case RegularExpressionPatternType.ssn:
-        pattern = RegExPatternConstants.ssn;
+        pattern = OceanRegExPatternConstants.ssn;
         brokenRuleMessage =
             MessageConstants.regularExpressionDidNotMatchTheRequiredSSNPatternFormat.formatString(displayName);
         break;
       case RegularExpressionPatternType.urlHttpHttpsFtp:
-        pattern = RegExPatternConstants.urlHttpHttpsFtp;
+        pattern = OceanRegExPatternConstants.urlHttpHttpsFtp;
         brokenRuleMessage =
             MessageConstants.regularExpressionDidNotMatchTheRequiredURLPatternFormat.formatString(displayName);
         break;
       case RegularExpressionPatternType.usPhoneNumber:
-        pattern = RegExPatternConstants.usPhoneNumber;
+        pattern = OceanRegExPatternConstants.usPhoneNumber;
         brokenRuleMessage =
             MessageConstants.regularExpressionDidNotMatchTheRequiredUSPhoneNumberPatternFormat.formatString(displayName);
         break;
       case RegularExpressionPatternType.usZipCode:
-        pattern = RegExPatternConstants.usZipCode;
+        pattern = OceanRegExPatternConstants.usZipCode;
         brokenRuleMessage =
             MessageConstants.regularExpressionDidNotMatchTheRequiredZipCodePatternFormat.formatString(displayName);
         break;
@@ -192,7 +192,7 @@ class RegularExpressionValidator extends ValidatorBase {
     RegExp regex = RegExp(pattern, caseSensitive: false);
     regex.allMatches('input').length;
     if (regex.hasMatch(targetValue)) {
-      if (pattern == RegExPatternConstants.urlHttpHttpsFtp) {
+      if (pattern == OceanRegExPatternConstants.urlHttpHttpsFtp) {
         final result = Uri.parse(targetValue);
         if (result.isAbsolute) {
           return ValidateResult.success();

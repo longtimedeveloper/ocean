@@ -3,14 +3,14 @@ import 'package:ocean/ocean.dart';
 class UserOptions extends BusinessObjectBase {
   UserOptions._();
 
-  factory UserOptions.create({String activeRuleSet = ValidationConstants.insert}) {
+  factory UserOptions.create({String activeRuleSet = OceanValidationConstants.insert}) {
     final userRegistration = UserOptions._();
     userRegistration.activeRuleSet = activeRuleSet;
     userRegistration.checkAllRules();
     return userRegistration;
   }
 
-  factory UserOptions.fromMap(Map<String, dynamic> map, {String activeRuleSet = ValidationConstants.update}) {
+  factory UserOptions.fromMap(Map<String, dynamic> map, {String activeRuleSet = OceanValidationConstants.update}) {
     final userRegistration = UserOptions._()
       .._acknowledgeClubTerms = map[acknowledgeClubTermsPropertyName]
       .._acknowledgeTerms = map[acknowledgeTermsPropertyName]

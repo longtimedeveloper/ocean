@@ -34,10 +34,10 @@ class StringLengthValidator extends ValidatorBase {
     String propertyName,
     int minimumLength,
     int maximumLength, {
-    String ruleSet = StringCharacterConstants.stringEmpty,
-    String friendlyName = StringCharacterConstants.stringEmpty,
-    String additionalMessage = StringCharacterConstants.stringEmpty,
-    String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+    String ruleSet = OceanStringCharacterConstants.stringEmpty,
+    String friendlyName = OceanStringCharacterConstants.stringEmpty,
+    String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+    String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
     AllowNullValue allowNullValue = AllowNullValue.no,
     AllowMultiple allowMultiple = AllowMultiple.no,
   }) : super(
@@ -50,7 +50,7 @@ class StringLengthValidator extends ValidatorBase {
           allowNullValue: allowNullValue,
           requiredEntry: RequiredEntry.no, // required entry is not used in this validator since min/max length handle this.
         ) {
-    if (minimumLength < NumericConstants.zero) {
+    if (minimumLength < OceanNumericConstants.zero) {
       throw OceanArgumentException(FieldNameConstants.minimumLength, MessageConstants.mustBeGreaterThanZero);
     }
     if (maximumLength < minimumLength) {
@@ -66,10 +66,10 @@ class StringLengthValidator extends ValidatorBase {
   StringLengthValidator.maximumOnly(
     String propertyName,
     int maximumLength, {
-    String ruleSet = StringCharacterConstants.stringEmpty,
-    String friendlyName = StringCharacterConstants.stringEmpty,
-    String additionalMessage = StringCharacterConstants.stringEmpty,
-    String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+    String ruleSet = OceanStringCharacterConstants.stringEmpty,
+    String friendlyName = OceanStringCharacterConstants.stringEmpty,
+    String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+    String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
     AllowNullValue allowNullValue = AllowNullValue.no,
   }) : super(
           propertyName,
@@ -79,10 +79,10 @@ class StringLengthValidator extends ValidatorBase {
           overrideErrorMessage: overrideErrorMessage,
           allowMultiple: AllowMultiple.no,
         ) {
-    if (maximumLength < NumericConstants.one) {
+    if (maximumLength < OceanNumericConstants.one) {
       throw OceanArgumentException(FieldNameConstants.maximumLength, MessageConstants.mustBeGreaterThanZero);
     }
-    _minimumLength = NumericConstants.minusOne;
+    _minimumLength = OceanNumericConstants.minusOne;
     _maximumLength = maximumLength;
   }
 
@@ -121,7 +121,7 @@ class StringLengthValidator extends ValidatorBase {
 
     final targetValue = value.toString().trim();
 
-    if (_minimumLength > NumericConstants.zero && targetValue.length < _minimumLength) {
+    if (_minimumLength > OceanNumericConstants.zero && targetValue.length < _minimumLength) {
       return super
           .createFailedValidateResult(MessageConstants.isShorterThanFormat.formatString(displayName, _minimumLength));
     }

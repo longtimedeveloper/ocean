@@ -6,10 +6,10 @@ void main() {
     test('description', () {
       void testRunner(String propertyName, int minimumLength, int maximumLength, String businessObjectActiveRuleSet,
           dynamic value, String expectedMessage, bool expectedIsValid,
-          {String ruleSet = StringCharacterConstants.stringEmpty,
-          String friendlyName = StringCharacterConstants.stringEmpty,
-          String additionalMessage = StringCharacterConstants.stringEmpty,
-          String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+          {String ruleSet = OceanStringCharacterConstants.stringEmpty,
+          String friendlyName = OceanStringCharacterConstants.stringEmpty,
+          String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+          String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
           AllowNullValue allowNullValue = AllowNullValue.no,
           AllowMultiple allowMultiple = AllowMultiple.no}) {
         // arrange
@@ -33,13 +33,14 @@ void main() {
         expect(result.isValid, expectedIsValid);
       }
 
-      testRunner('firstName', 1, 25, ValidationConstants.insert, 'hi', '', true);
-      testRunner('firstName', 1, 25, ValidationConstants.insert, '', 'First Name is shorter than 1.', false);
-      testRunner('firstName', 1, 5, ValidationConstants.insert, 'dddddd', 'First Name is longer than 5.', false);
+      testRunner('firstName', 1, 25, OceanValidationConstants.insert, 'hi', '', true);
+      testRunner('firstName', 1, 25, OceanValidationConstants.insert, '', 'First Name is shorter than 1.', false);
+      testRunner('firstName', 1, 5, OceanValidationConstants.insert, 'dddddd', 'First Name is longer than 5.', false);
 
-      testRunner('firstName', 1, 5, ValidationConstants.insert, 'dddddd', '', true, ruleSet: ValidationConstants.delete);
-      testRunner('firstName', 1, 5, ValidationConstants.insert, null, 'First Name null value is not allowed.', false);
-      testRunner('firstName', 1, 5, ValidationConstants.insert, null, '', true, allowNullValue: AllowNullValue.yes);
+      testRunner('firstName', 1, 5, OceanValidationConstants.insert, 'dddddd', '', true,
+          ruleSet: OceanValidationConstants.delete);
+      testRunner('firstName', 1, 5, OceanValidationConstants.insert, null, 'First Name null value is not allowed.', false);
+      testRunner('firstName', 1, 5, OceanValidationConstants.insert, null, '', true, allowNullValue: AllowNullValue.yes);
     });
 
     test('exception thrown when property name is empty', () {

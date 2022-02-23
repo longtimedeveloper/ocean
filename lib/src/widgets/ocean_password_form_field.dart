@@ -110,13 +110,13 @@ class _OceanPasswordFormFieldState extends State<OceanPasswordFormField> {
     focusNode.addListener(updateModel);
     onPasswordChanged(widget.propertyGetter());
 
-    confirmPasswordLabel = PasswordFieldConstants.passwordConfirmLabelPrefix + ' ' + facade.propertyMetadata.labelText;
+    confirmPasswordLabel = OceanPasswordFieldConstants.passwordConfirmLabelPrefix + ' ' + facade.propertyMetadata.labelText;
   }
 
   Widget? buildPasswordSuffixIcon() {
     if (widget.showPasswordHideShowButton) {
       return IconButton(
-        key: const Key(PasswordFieldConstants.passwordFieldIconButtonKey),
+        key: const Key(OceanPasswordFieldConstants.passwordFieldIconButtonKey),
         icon: Icon(isTextObscured ? Icons.visibility : Icons.visibility_off),
         onPressed: () {
           setState(() {
@@ -148,7 +148,7 @@ class _OceanPasswordFormFieldState extends State<OceanPasswordFormField> {
   InputDecoration inputDecorationBuilder(BuildContext context) {
     var errorMaxLines = facade.propertyMetadata.errorMaxLines;
     if (isNullOrLessThan(errorMaxLines)) {
-      errorMaxLines = PasswordFieldConstants.passwordFormFieldDefultErrorMaxLines;
+      errorMaxLines = OceanPasswordFieldConstants.passwordFormFieldDefultErrorMaxLines;
     }
 
     var constraints = widget.constraints;
@@ -171,7 +171,7 @@ class _OceanPasswordFormFieldState extends State<OceanPasswordFormField> {
   bool isNullOrLessThan(int? errorMaxLines) =>
       errorMaxLines == null ||
       errorMaxLines < // coverage:ignore-line
-          PasswordFieldConstants.passwordFormFieldMinimumErrorMaxLines; // coverage:ignore-line
+          OceanPasswordFieldConstants.passwordFormFieldMinimumErrorMaxLines; // coverage:ignore-line
 
   void onPasswordChanged(String? value) {
     if (value == null || value.isEmpty) {

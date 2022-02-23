@@ -40,12 +40,12 @@ class ComparePropertyValidator extends ValidatorBase with CompareValuesMixin {
     String propertyName,
     this.compareToPropertyName,
     this.comparisionType, {
-    String ruleSet = StringCharacterConstants.stringEmpty,
-    String friendlyName = StringCharacterConstants.stringEmpty,
-    String additionalMessage = StringCharacterConstants.stringEmpty,
-    String overrideErrorMessage = StringCharacterConstants.stringEmpty,
+    String ruleSet = OceanStringCharacterConstants.stringEmpty,
+    String friendlyName = OceanStringCharacterConstants.stringEmpty,
+    String additionalMessage = OceanStringCharacterConstants.stringEmpty,
+    String overrideErrorMessage = OceanStringCharacterConstants.stringEmpty,
     AllowMultiple allowMultiple = AllowMultiple.no,
-    this.compareToPropertyFriendlyName = StringCharacterConstants.stringEmpty,
+    this.compareToPropertyFriendlyName = OceanStringCharacterConstants.stringEmpty,
   }) : super(
           propertyName,
           ruleSet: ruleSet,

@@ -9,14 +9,14 @@ enum NotificationFrequency {
 class ApplicationSettings extends BusinessObjectBase {
   ApplicationSettings._();
 
-  factory ApplicationSettings.create({String activeRuleSet = ValidationConstants.insert}) {
+  factory ApplicationSettings.create({String activeRuleSet = OceanValidationConstants.insert}) {
     final applicationSettings = ApplicationSettings._();
     applicationSettings.activeRuleSet = activeRuleSet;
     applicationSettings.checkAllRules();
     return applicationSettings;
   }
 
-  factory ApplicationSettings.fromMap(Map<String, dynamic> map, {String activeRuleSet = ValidationConstants.update}) {
+  factory ApplicationSettings.fromMap(Map<String, dynamic> map, {String activeRuleSet = OceanValidationConstants.update}) {
     final applicationSettings = ApplicationSettings._()
       .._defaultCategory = map[defaultCategoryPropertyName]
       .._notificationFrequency = map[notificationFrequencyPropertyName]
@@ -56,12 +56,12 @@ class ApplicationSettings extends BusinessObjectBase {
   /// Provides, trashCanRetention
   static const String trashCanRetentionPropertyName = 'trashCanRetention';
 
-  int _defaultCategory = NumericConstants.zero;
+  int _defaultCategory = OceanNumericConstants.zero;
   NotificationFrequency _notificationFrequency = NotificationFrequency.none;
   bool _showFavorites = false;
   bool _showHiddenSettings = false;
   double _storageLimit = 0;
-  String _themeName = StringCharacterConstants.stringEmpty;
+  String _themeName = OceanStringCharacterConstants.stringEmpty;
   double _trashCanRetention = 0;
 
   @override

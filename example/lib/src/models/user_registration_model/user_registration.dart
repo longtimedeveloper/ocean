@@ -3,14 +3,14 @@ import 'package:ocean/ocean.dart';
 class UserRegistration extends BusinessObjectBase {
   UserRegistration._();
 
-  factory UserRegistration.create({String activeRuleSet = ValidationConstants.insert}) {
+  factory UserRegistration.create({String activeRuleSet = OceanValidationConstants.insert}) {
     final userRegistration = UserRegistration._();
     userRegistration.activeRuleSet = activeRuleSet;
     userRegistration.checkAllRules();
     return userRegistration;
   }
 
-  factory UserRegistration.fromMap(Map<String, dynamic> map, {String activeRuleSet = ValidationConstants.update}) {
+  factory UserRegistration.fromMap(Map<String, dynamic> map, {String activeRuleSet = OceanValidationConstants.update}) {
     final userRegistration = UserRegistration._()
       .._acknowledgeTerms = map[acknowledgeTermsPropertyName]
       .._password = map[passwordPropertyName]
@@ -53,8 +53,8 @@ class UserRegistration extends BusinessObjectBase {
   static const String userNamePropertyName = 'userName';
 
   bool _acknowledgeTerms = false;
-  String _password = StringCharacterConstants.stringEmpty;
-  String _userName = StringCharacterConstants.stringEmpty;
+  String _password = OceanStringCharacterConstants.stringEmpty;
+  String _userName = OceanStringCharacterConstants.stringEmpty;
 
   @override
   Map<String, dynamic> toJson() => {

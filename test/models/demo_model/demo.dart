@@ -3,14 +3,14 @@ import 'package:ocean/ocean.dart';
 class Demo extends BusinessObjectBase {
   Demo._();
 
-  factory Demo.create({String activeRuleSet = ValidationConstants.insert}) {
+  factory Demo.create({String activeRuleSet = OceanValidationConstants.insert}) {
     final demo = Demo._();
     demo.activeRuleSet = activeRuleSet;
     demo.checkAllRules();
     return demo;
   }
 
-  factory Demo.createAndPopulate({String activeRuleSet = ValidationConstants.insert}) {
+  factory Demo.createAndPopulate({String activeRuleSet = OceanValidationConstants.insert}) {
     final demo = Demo._();
     demo.checkAllRules();
     demo.activeRuleSet = activeRuleSet;
@@ -134,15 +134,15 @@ class Demo extends BusinessObjectBase {
   static const String userNamePropertyName = 'userName';
 
   int _age = 0;
-  String _cellPhone = StringCharacterConstants.stringEmpty;
+  String _cellPhone = OceanStringCharacterConstants.stringEmpty;
   String? _dummy;
-  String _email = StringCharacterConstants.stringEmpty;
+  String _email = OceanStringCharacterConstants.stringEmpty;
   int _favorites = 0;
-  String _firstName = StringCharacterConstants.stringEmpty;
-  String _lastName = StringCharacterConstants.stringEmpty;
-  String _password = StringCharacterConstants.stringEmpty;
-  String _phone = StringCharacterConstants.stringEmpty;
-  String _userName = StringCharacterConstants.stringEmpty;
+  String _firstName = OceanStringCharacterConstants.stringEmpty;
+  String _lastName = OceanStringCharacterConstants.stringEmpty;
+  String _password = OceanStringCharacterConstants.stringEmpty;
+  String _phone = OceanStringCharacterConstants.stringEmpty;
+  String _userName = OceanStringCharacterConstants.stringEmpty;
 
   @override
   Map<String, dynamic> toJson() => {

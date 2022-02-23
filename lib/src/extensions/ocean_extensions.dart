@@ -5,7 +5,7 @@ String _convertToTitleCase(String text) {
     return text.toUpperCase();
   }
 
-  final beforeCapitalLetter = RegExp(RegExPatternConstants.capitalLetter);
+  final beforeCapitalLetter = RegExp(OceanRegExPatternConstants.capitalLetter);
   final parts = text.split(beforeCapitalLetter);
 
   if (parts.isNotEmpty) {
@@ -13,7 +13,7 @@ String _convertToTitleCase(String text) {
     final String remainingLetters = parts[0].substring(1);
     parts[0] = '$firstLetter$remainingLetters';
   }
-  return parts.join(StringCharacterConstants.singleSpace);
+  return parts.join(OceanStringCharacterConstants.singleSpace);
 }
 
 extension CapitalizedStringExtension on String {
@@ -44,15 +44,15 @@ extension RemoveLastCharacters on String {
 
 extension StringContains on String {
   int countOfUpperCaseLetters() {
-    return _countOf(this, RegExPatternConstants.upperCaseLetters);
+    return _countOf(this, OceanRegExPatternConstants.upperCaseLetters);
   }
 
   int countOfLowerCaseLetters() {
-    return _countOf(this, RegExPatternConstants.lowerCaseLetters);
+    return _countOf(this, OceanRegExPatternConstants.lowerCaseLetters);
   }
 
   int countOfDigits() {
-    return _countOf(this, RegExPatternConstants.digits);
+    return _countOf(this, OceanRegExPatternConstants.digits);
   }
 
   int countOfSpecialCharacters(List<String> allowedSpecialCharacters) {
@@ -100,7 +100,7 @@ extension StringIsAExtension on String {
       throw OceanException(MessageConstants.lengthMustBeOne);
     }
 
-    final r = RegExp(RegExPatternConstants.upperAndLowerCaseLetters);
+    final r = RegExp(OceanRegExPatternConstants.upperAndLowerCaseLetters);
     return r.hasMatch(this);
   }
 
@@ -110,12 +110,12 @@ extension StringIsAExtension on String {
       throw OceanException(MessageConstants.lengthMustBeOne);
     }
 
-    final r = RegExp(RegExPatternConstants.digits);
+    final r = RegExp(OceanRegExPatternConstants.digits);
     return r.hasMatch(this);
   }
 
   bool isAllDigits() {
-    final r = RegExp(RegExPatternConstants.digitsOnly);
+    final r = RegExp(OceanRegExPatternConstants.digitsOnly);
     return r.hasMatch(this);
   }
 }

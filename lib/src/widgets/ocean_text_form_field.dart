@@ -87,7 +87,7 @@ class _OceanTextFormFieldState extends State<OceanTextFormField> {
   Widget? buildPasswordSuffixIcon() {
     if (widget.showHideShowTextButton) {
       return IconButton(
-        key: const Key(PasswordFieldConstants.passwordFieldIconButtonKey),
+        key: const Key(OceanPasswordFieldConstants.passwordFieldIconButtonKey),
         icon: Icon(isTextObscured ? Icons.visibility : Icons.visibility_off),
         onPressed: () {
           setState(() {

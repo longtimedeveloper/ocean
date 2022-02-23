@@ -46,7 +46,7 @@ void main() {
     await tester.enterText(passwordFieldFinder, '');
 
     await tester.sendKeyEvent(LogicalKeyboardKey.tab);
-    final passwordFieldIconButtonFinder = find.byKey(const Key(PasswordFieldConstants.passwordFieldIconButtonKey));
+    final passwordFieldIconButtonFinder = find.byKey(const Key(OceanPasswordFieldConstants.passwordFieldIconButtonKey));
     await tester.tap(passwordFieldIconButtonFinder);
     await tester.pumpAndSettle();
 
@@ -86,7 +86,7 @@ void main() {
     await tester.enterText(passwordFieldFinder, '');
 
     await tester.sendKeyEvent(LogicalKeyboardKey.tab);
-    final passwordFieldIconButtonFinder = find.byKey(const Key(PasswordFieldConstants.passwordFieldIconButtonKey));
+    final passwordFieldIconButtonFinder = find.byKey(const Key(OceanPasswordFieldConstants.passwordFieldIconButtonKey));
     await tester.tap(passwordFieldIconButtonFinder);
     await tester.pumpAndSettle();
 
