@@ -31,6 +31,7 @@ class SharedStringCasingChecks {
       throw OceanException(MessageConstants.sharedStringCasingChecksAlreadyInDatabase);
     }
     _internalStringCasingChecks!.add(stringCasingCheck);
+    _internalStringCasingChecks!.sort();
     _updateUnmodifiableListViewStringCasingChecks();
   }
 
