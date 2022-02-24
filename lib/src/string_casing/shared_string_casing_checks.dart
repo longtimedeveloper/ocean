@@ -89,15 +89,15 @@ class SharedStringCasingChecks {
     _updateUnmodifiableListViewStringCasingChecks();
   }
 
-  void removeStringCasingCheck(StringCasingCheck stringCasingCheck) {
+  void removeStringCasingCheck(String id) {
     if (_internalStringCasingChecks == null) {
       throw OceanException(MessageConstants.sharedStringCasingChecksMustBeLoaded);
     }
-    final test = _internalStringCasingChecks!.singleWhereOrNull((element) => element.id == stringCasingCheck.id);
+    final test = _internalStringCasingChecks!.singleWhereOrNull((element) => element.id == id);
     if (test == null) {
       throw OceanException(MessageConstants.sharedStringCasingChecksNotInDatabase);
     }
-    _internalStringCasingChecks!.removeWhere((element) => element.id == stringCasingCheck.id);
+    _internalStringCasingChecks!.removeWhere((element) => element.id == id);
     _updateUnmodifiableListViewStringCasingChecks();
   }
 
