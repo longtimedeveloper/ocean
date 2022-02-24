@@ -18,14 +18,18 @@ class MessageConstants {
   /// Provides, two placeholders for, {0} {1} is not a valid credit card number.
   static const String creditCardNumberIsNotValidFormat = '{0} {1} is not a valid credit card number.';
 
+  /// Provides, one placeholder for, Invalid custom regular expression pattern.
+  static const String dialogCompleterIsNull =
+      'Dialog Completer is null. DialogComplete can only be called once from a dialog.';
+
   /// Provides, three placeholders for, {0} {1} did not match any of the acceptable values {2}.
   static const String didNotMatchAnyOfTheAcceptableValuesFormat = '{0} {1} did not match any of the acceptable values {2}.';
 
-  /// Provides, Duplicate {0} key, key already added.
-  static const String duplicateKeyAlreadyAddedFormat = 'Duplicate {0} key, key already added.';
-
   /// Provides, Duplicate dialog position {0}, has already added.
   static const String duplicateDialogPositionAlreadyAddedFormat = 'Duplicate dialog position {0}, has already added.';
+
+  /// Provides, Duplicate {0} key, key already added.
+  static const String duplicateKeyAlreadyAddedFormat = 'Duplicate {0} key, key already added.';
 
   /// Provides, one placeholder for, Invalid StringCasing, must be a Phone casing value. Passed value was: {0}.
   static const String invalidStringCasingMustBeAPhoneCasingFormat =
@@ -190,13 +194,15 @@ class MessageConstants {
   /// Provides, one placeholder for, Invalid custom regular expression pattern.
   static const String regularExpressionInvalidCustomRegularExpressionPattern = 'Invalid custom regular expression pattern.';
 
-  /// Provides, one placeholder for, Invalid custom regular expression pattern.
-  static const String dialogCompleterIsNull =
-      'Dialog Completer is null. DialogComplete can only be called once from a dialog.';
+  /// Provides, SharedStringCasingChecks does not contain the record.
+  static const String sharedStringCasingChecksAlreadyInDatabase = 'SharedStringCasingChecks record already in database.';
 
   /// Provides, SharedStringCasingChecks has not been initialized.  SharedStringCasingChecks.loadDefaultChecks or SharedStringCasingChecks.loadChecks must be called first.
   static const String sharedStringCasingChecksMustBeLoaded =
       'SharedStringCasingChecks has not been initialized. SharedStringCasingChecks.loadDefaultChecks or SharedStringCasingChecks.loadChecks must be called first.';
+
+  /// Provides, SharedStringCasingChecks does not contain the record.
+  static const String sharedStringCasingChecksNotInDatabase = 'SharedStringCasingChecks does not contain the record.';
 
   /// Provides, two placeholders, {0} '{1}' state abbreviation is not valid.
   static const String stateAbbreviationIsNotValidFormat = '{0} state abbreviation ({1}) is not valid.';

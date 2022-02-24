@@ -1,4 +1,4 @@
-import 'dart:collection';
+import 'package:collection/collection.dart';
 import 'package:uuid/uuid.dart';
 import 'string_casing.dart';
 import '../infrastructure/infrastructure.dart';
@@ -25,6 +25,10 @@ class SharedStringCasingChecks {
   void addStringCasingCheck(StringCasingCheck stringCasingCheck) {
     if (_internalStringCasingChecks == null) {
       throw OceanException(MessageConstants.sharedStringCasingChecksMustBeLoaded);
+    }
+    final test = _internalStringCasingChecks!.singleWhereOrNull((element) => element.id == stringCasingCheck.id);
+    if (test != null) {
+      throw OceanException(MessageConstants.sharedStringCasingChecksAlreadyInDatabase);
     }
     _internalStringCasingChecks!.add(stringCasingCheck);
     _updateUnmodifiableListViewStringCasingChecks();
@@ -82,6 +86,18 @@ class SharedStringCasingChecks {
         id: const Uuid().v1(), lookFor: 'O\'', replaceWith: 'O\'', stringCasingMethod: StringCasingMethod.regEx));
 
     _internalStringCasingChecks = stringCasingChecks;
+    _updateUnmodifiableListViewStringCasingChecks();
+  }
+
+  void removeStringCasingCheck(StringCasingCheck stringCasingCheck) {
+    if (_internalStringCasingChecks == null) {
+      throw OceanException(MessageConstants.sharedStringCasingChecksMustBeLoaded);
+    }
+    final test = _internalStringCasingChecks!.singleWhereOrNull((element) => element.id == stringCasingCheck.id);
+    if (test == null) {
+      throw OceanException(MessageConstants.sharedStringCasingChecksNotInDatabase);
+    }
+    _internalStringCasingChecks!.removeWhere((element) => element.id == stringCasingCheck.id);
     _updateUnmodifiableListViewStringCasingChecks();
   }
 
